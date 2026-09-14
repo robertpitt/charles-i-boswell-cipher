@@ -1,5 +1,7 @@
 """Reproducibility and preservation tests, not historical authentication."""
 import unittest
+import json
+import concordance
 import decode_boswell as d
 
 class DecoderTests(unittest.TestCase):
@@ -41,5 +43,29 @@ class DecoderTests(unittest.TestCase):
         self.assertEqual(d.decode('588 800 835'),'{OF} {TO} {UN}')
     def test_no_modernising_u_v(self):
         self.assertEqual(d.compact('123 138 69 94 96 89 118'),'RECEIUE')
+    def test_external_ciphertext_and_existing_assignments(self):
+        evidence=json.loads((d.ROOT/'input/external_evidence.json').read_text(encoding='utf-8'))
+        for number,output in evidence['unchanged_assignments_checked'].items():
+            self.assertEqual(d.value_for(int(number))[0],output)
+        for span in evidence['ciphertext_spans']:
+            with self.subTest(span=span['id']):
+                self.assertEqual(d.decode(span['ciphertext']),span['working_literal_expected'])
+        self.assertEqual(d.decode('291'),'{DUKE}')
+        self.assertEqual(d.decode('291',mode='core'),'⟦291⟧')
+    def test_new_weapons_crib_does_not_change_working_decode(self):
+        self.assertEqual(d.decode('755 188 539 40 16 61 at 45 83 & 639'),
+                         '⟦755⟧ ⟦188⟧ ⟦539⟧ S ⟨∅:16⟩ M at C H & ⟦639⟧')
+    def test_concordance_exact_numbers_and_qualifiers(self):
+        text='188 1188 873r 291, 6_ 1643'
+        records=concordance.find_occurrences(text,{188,873,291,6})
+        self.assertEqual([r['source_field'] for r in records],['188','873r','291,','6_'])
+        self.assertEqual([text[r['source_start']:r['source_end']] for r in records],
+                         ['188','873','291','6'])
+    def test_concordance_counts_in_main_corpus(self):
+        from collections import Counter
+        codes={755,188,539,639,228,291,873}
+        counts=Counter(r['number'] for name,doc in d.SOURCES['documents'].items()
+                       for r in concordance.find_occurrences(doc['cipher_bearing_extract'],codes,name))
+        self.assertEqual(dict(counts),{755:1,188:1,539:1,639:1,228:1,291:2,873:6})
 
 if __name__=='__main__': unittest.main()

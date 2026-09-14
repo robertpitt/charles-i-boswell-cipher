@@ -12,7 +12,8 @@ Several word codes, graphical signs, and anomalous passages remain unresolved.
 | Partial key, evidence, and separately labelled hypotheses | [partial_key.json](partial_key.json) |
 | Complete output of the working partial key | [Charles](output/charles.txt), [Nicholas](output/nicholas.txt) |
 | Decoder | [decode_boswell.py](decode_boswell.py) |
-| 25 passage checks with exact source offsets | [proof_passages.json](proof_passages.json) |
+| 27 passage checks with exact source offsets | [proof_passages.json](proof_passages.json) |
+| External cipher evidence and follow-up research | [FINDINGS.md](FINDINGS.md), [reference data](input/external_evidence.json) |
 
 ## The key
 
@@ -30,9 +31,9 @@ for example. The rule predicts 96 entries; 80 distinct values occur in the
 inputs. It is not extended beyond 115.
 
 The **working** key adds 24 explicitly listed letter assignments, 24 proposed
-null values (numbers assumed to contribute no text), and three proposed word or
-syllable codes: `588 = OF`, `800 = TO`, and `835 = UN`. Each additional assignment
-has its evidence in the key file; some rely on a single context. Further guesses
+null values (numbers assumed to contribute no text), and four word, syllable,
+or title codes: `588 = OF`, `800 = TO`, `835 = UN`, and `291 = DUKE`.
+Each additional assignment has its evidence in the key file; some rely on a single context. Further guesses
 are confined to **exploratory** mode.
 
 ## Decoded examples and findings
@@ -65,15 +66,19 @@ and 15 graphical occurrences**:
 | Main alphabet letters | 274 |
 | Additional letter assignments | 52 |
 | Proposed nulls | 51 |
-| Working word/syllable codes | 22 |
+| Working word/syllable codes | 24 |
 | Date/annotation fields | 2 |
-| Unresolved numbers | 50 |
+| Unresolved numbers | 48 |
 | Unresolved graphical signs | 15 |
 
 These counts measure mapping coverage, **not decipherment accuracy**. Anomalies
 such as `PHEN`, `SIGNIAY`, and `DAR&MOUTH` are retained. The group mentioned in
 Nicholas's letter, proposed supplies in Charles's letter, and a possible fifth
-port are not established by this key.
+port are not established by this key. A separate letter printed in 1893, also
+dated 2 November 1643, contains a numerical line that the original v1 key reads as
+`⟦291⟧ OF CURLAND`. Its printed addressee supports the new working `291 = DUKE`
+assignment. See [follow-up findings](FINDINGS.md) for the source image, comparison,
+and unresolved weapons alternatives. This external reference is counted separately.
 
 ## Reading the output
 
@@ -93,6 +98,7 @@ python3 decode_boswell.py --mode working
 python3 decode_boswell.py --check
 python3 verify_independently.py
 python3 -m unittest -v test_decoder.py
+python3 concordance.py 755 188 539 639 228 291 873 --include-external
 python3 decode_boswell.py --audit generated
 ```
 
@@ -101,24 +107,26 @@ a CSV containing every numerical/graphical token. The two committed outputs
 match the generated `*_working_literal.txt` files. Use `--document Charles` or
 `--document Nicholas` to select a letter; `--hide-nulls` improves readability.
 
-Decoding does not load proposed plaintext. The 25 passage checks deliberately
-compare against disclosed proposed readings, covering 140 distinct numerical
+Decoding does not load proposed plaintext. The 27 passage checks deliberately
+compare against disclosed proposed readings, covering 147 distinct numerical
 positions, with overlaps between examples. The separate verifier checks those
-examples without importing the decoder. Passing these checks establishes
-computational reproducibility, not independent historical confirmation.
+examples and the external numerical address without importing the decoder.
+The concordance locates exact numerical tokens without loading a key.
+Passing these checks establishes computational reproducibility, not independent
+historical confirmation.
 
 ## Provenance and limits
 
 Prepared from the supplied `boswell_breakthrough_evidence.zip` evidence package.
-The inputs, key, passage checks, and working outputs are preserved from that
-package. Source: S. Tomokiyo,
+The original inputs are preserved unchanged; subsequent key and evidence updates
+are documented in [FINDINGS.md](FINDINGS.md). Source: S. Tomokiyo,
 [“Charles I–Boswell Cipher (1643)”](https://cryptiana.blogspot.com/2021/09/charles-i-boswell-cipher-1643.html),
 Cryptiana Discussion Forum, 17 September 2021. The author describes the
 transcriptions as provisional and the recipient's identity as uncertain.
 
-This investigation has not examined original manuscript images, a matching
-historical key, or an independently authenticated plaintext. Neither a complete
-solution nor first-ever priority is claimed.
+This investigation has not examined the original target manuscripts, a matching
+historical key, or an authenticated plaintext of either target letter. Neither a
+complete solution nor first-ever priority is claimed.
 
 ## License
 

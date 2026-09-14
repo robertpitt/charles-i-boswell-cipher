@@ -273,5 +273,27 @@
     "literal_compact_expected": "ACKNOWLEDGE",
     "note": "KNOWLEDGE was cleartext; 18 and 10 are null candidates.",
     "warning": "Expected text is a proposed reading for a reproducibility test, not an external answer key."
+  },
+  {
+    "id": "P26",
+    "document": "Charles",
+    "source_start": 1166,
+    "source_end": 1177,
+    "source": "61 at 45 83",
+    "mode": "core",
+    "literal_compact_expected": "MATCH",
+    "note": "M, C and H are enciphered using the unchanged periodic block; AT was already cleartext. No weapons word-code hypothesis is needed.",
+    "warning": "Expected text is a proposed reading for a reproducibility test, not an external answer key."
+  },
+  {
+    "id": "P27",
+    "document": "Charles",
+    "source_start": 206,
+    "source_end": 221,
+    "source": "21 41 52 49 and",
+    "mode": "core",
+    "literal_compact_expected": "CURLAND",
+    "note": "CURL uses the unchanged periodic block; AND was already cleartext. Compare the fully numerical CURLAND suffix in input/external_evidence.json.",
+    "warning": "Expected text is a proposed reading for a reproducibility test, not an external answer key."
   }
 ]

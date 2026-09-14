@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""A separate implementation checks the 25 disclosed examples.
+"""A separate implementation checks the disclosed examples and external address.
 
 This script does not import the decoder. It verifies arithmetic, source offsets
 and proposed readings. It does NOT prove priority or historical authenticity.
@@ -37,4 +37,9 @@ for p in proofs:
     actual=independently_decode(text,p['mode'])
     assert actual==p['literal_compact_expected'],(p['id'],actual,p['literal_compact_expected'])
     print(p['id']+': '+actual)
-print('All 25 examples reproduced by the separate implementation. This is not independent historical review.')
+external=json.loads((root/'input/external_evidence.json').read_text(encoding='utf-8'))
+address=next(p for p in external['ciphertext_spans'] if p['id']=='E01')
+actual=independently_decode(address['ciphertext'],'working')
+assert actual=='DUKE,OF,C,U,R,L,A,N,D.',actual
+print('E01: '+actual)
+print(f'All {len(proofs)} examples and the external address reproduced by the separate implementation. This is not independent historical review.')

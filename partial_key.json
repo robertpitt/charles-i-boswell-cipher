@@ -1,5 +1,5 @@
 {
-  "version": "2026-09-14 partial-breakthrough v1",
+  "version": "2026-09-14 partial-breakthrough v2",
   "claim": "Recovered systematic main alphabet with proposed additional letters, nulls and a few word codes. Not a complete authenticated decipherment.",
   "core": {
     "minimum": 20,
@@ -203,6 +203,12 @@
       "output": "un",
       "evidence_class": "single-context",
       "evidence": "UN + D E R + cleartext stand gives UNDERSTAND."
+    },
+    "291": {
+      "output": "duke",
+      "evidence_class": "external-ciphertext-context",
+      "evidence": "Two occurrences in Charles (DUKE OF CURLand; late [303] DUKE S), plus a separately published letter of 2 November 1643 to Duke James. Its numerical line 291, 588, 45, 135, 52, 25, 20, 50, 81 gives [291] OF CURLAND with the v1 key. The printed addressee supports DUKE. See input/external_evidence.json and FINDINGS.md. Working inference, not a recovered historical key.",
+      "source_url": "https://archive.org/details/miscellanyofscot01scot/page/149/mode/1up"
     }
   },
   "word_code_hypotheses": {
@@ -224,7 +230,11 @@
     },
     "188": {
       "output": "arms",
-      "evidence": "Possible supplies list only."
+      "evidence": "Possible supplies list only. New history-led alternative POWDER competes with the original ARMS conjecture. The St Andrews arms list and later correspondence support the topic, not these numerical assignments. See FINDINGS.md.",
+      "alternatives": [
+        "powder"
+      ],
+      "source_url": "https://www.st-andrews.ac.uk/history/ssne/item.php?id=1490"
     },
     "190": {
       "output": "are",
@@ -250,10 +260,6 @@
       "output": "",
       "evidence": "Unresolved after ARRIUD and before cleartext safe."
     },
-    "291": {
-      "output": "duke",
-      "evidence": "Two occurrences: [291] OF CURLand and the late [303] [291] S. Title remains a word-code inference."
-    },
     "303": {
       "output": "",
       "evidence": "Unresolved, before probable DUKE S. Do not silently expand to two."
@@ -276,7 +282,11 @@
     },
     "539": {
       "output": "musket",
-      "evidence": "Possible supplies list; following S may be a plural ending."
+      "evidence": "Possible supplies list; following S may be a plural ending. New history-led alternative CANNON competes with MUSKET. The following 40=S permits either proposed plural stem. The St Andrews arms list and later correspondence support the topic, not these numerical assignments. See FINDINGS.md.",
+      "alternatives": [
+        "cannon"
+      ],
+      "source_url": "https://www.st-andrews.ac.uk/history/ssne/item.php?id=1490"
     },
     "591": {
       "output": "",
@@ -292,7 +302,11 @@
     },
     "639": {
       "output": "powder",
-      "evidence": "Possible supplies list after MATCH. Not established."
+      "evidence": "Possible supplies list after MATCH. Not established. New history-led alternative LEAD competes with POWDER. The code occurs only once. The St Andrews arms list and later correspondence support the topic, not these numerical assignments. See FINDINGS.md.",
+      "alternatives": [
+        "lead"
+      ],
+      "source_url": "https://www.st-andrews.ac.uk/history/ssne/item.php?id=1490"
     },
     "640": {
       "output": "port",
@@ -316,7 +330,12 @@
     },
     "755": {
       "output": "",
-      "evidence": "Unresolved, in possible supplies list."
+      "evidence": "Unresolved, in possible supplies list. A new history-led crib proposes MUSKETS; no repetition in the two-letter corpus establishes the word. The St Andrews arms list and later correspondence support the topic, not these numerical assignments. See FINDINGS.md.",
+      "alternatives": [
+        "musket",
+        "muskets"
+      ],
+      "source_url": "https://www.st-andrews.ac.uk/history/ssne/item.php?id=1490"
     },
     "851": {
       "output": "which",

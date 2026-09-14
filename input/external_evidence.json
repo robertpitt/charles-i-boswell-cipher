@@ -1,0 +1,54 @@
+{
+  "id": "courland-1643-11-02",
+  "retrieved_date": "2026-09-14",
+  "source": {
+    "title": "Civil War Papers: Letters of Sir John Cochran, etc., to the Duke of Courland, 1643–1650",
+    "volume": "Miscellany of the Scottish History Society, volume I (1893)",
+    "editor": "H. F. Morland Simpson; introductory note and archival transcripts by A. Seraphim",
+    "printed_page": 149,
+    "document_number": "I",
+    "document_heading": "King Charles I. of England to Duke James of Courland, dated Oxford, 2 November 1643. (Duplicate.)",
+    "document_date_as_printed": "1643-11-02",
+    "archival_attribution_as_printed": "Manuscripten-sammlung des Kurländischen Provincial-museums",
+    "page_url": "https://archive.org/details/miscellanyofscot01scot/page/149/mode/1up",
+    "scan_url": "https://iiif.archive.org/iiif/miscellanyofscot01scot$247/full/1600,/0/default.jpg",
+    "scan_sha256": "b5a8565ff83e10d9e56420a081529939ba5716ebc0b205e348629081e5432804",
+    "inspection": "The printed page image was visually checked. The original manuscript was not examined. The edition itself cautions about its transcription."
+  },
+  "ciphertext_spans": [
+    {
+      "id": "E01",
+      "location": "Bottom-left numerical line below the letter",
+      "ciphertext": "291, 588, 45, 135, 52, 25, 20, 50, 81.",
+      "baseline_working_literal": "⟦291⟧, {OF}, C, U, R, L, A, N, D.",
+      "working_literal_expected": "{DUKE}, {OF}, C, U, R, L, A, N, D.",
+      "interpretation": "DUKE OF CURLAND",
+      "warning": "The proposed title is supported by the printed addressee and agreement of the suffix with the pre-existing key; this is not a recovered historical key or an independent plaintext transcription of this numerical line."
+    },
+    {
+      "id": "E02",
+      "location": "Body, following the words by the convoyance of",
+      "ciphertext": "212, 364,",
+      "baseline_working_literal": "⟦212⟧, ⟨∅:364⟩,",
+      "working_literal_expected": "⟦212⟧, ⟨∅:364⟩,",
+      "interpretation": null,
+      "warning": "212 is unresolved; 364 remains a proposed null. Do not equate 212 with 213 or identify an intermediary from this occurrence alone."
+    }
+  ],
+  "baseline_key_commit": "165dd0c4de8fd6f98ba340ce04e397d6b37e19a1",
+  "unchanged_assignments_checked": {
+    "588": "OF",
+    "45": "C",
+    "135": "U",
+    "52": "R",
+    "25": "L",
+    "20": "A",
+    "50": "N",
+    "81": "D"
+  },
+  "working_key_change": {
+    "291": "DUKE"
+  },
+  "independence_limit": "An external ciphertext consistency check found through the Courland lead; not a blind sample or statistical accuracy estimate. It may belong to the same correspondence packet as the two main letters.",
+  "counting_scope": "This reference is separate from the two-letter input corpus and its 451 numerical / 15 graphical occurrence counts."
+}
