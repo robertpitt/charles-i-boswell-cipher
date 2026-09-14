@@ -33,6 +33,15 @@ class DecoderTests(unittest.TestCase):
         self.assertEqual(d.decode('873r 142'),'⟦873⟧r ⟦142⟧')
     def test_exploratory_values_are_marked(self):
         self.assertEqual(d.decode('873r',mode='exploratory'),'⟦873:YOU?⟧r')
+    def test_funeral_hypotheses_stay_exploratory(self):
+        self.assertEqual(d.decode('303 376',mode='core'),'⟦303⟧ ⟦376⟧')
+        self.assertEqual(d.decode('303 376'),'⟦303⟧ ⟨∅:376⟩')
+        self.assertEqual(d.decode('303 376',mode='exploratory'),
+                         '⟦303:TWO?⟧ ⟦376:BOTH?⟧')
+        self.assertEqual(d.decode('303 376 16',mode='exploratory',hide_nulls=True),
+                         '⟦303:TWO?⟧ ⟦376:BOTH?⟧ ')
+        records=d.audit_text('303 376',mode='exploratory')
+        self.assertEqual([r['category'] for r in records],['word_code_hypothesis']*2)
     def test_proof_source_and_outputs(self):
         for p in d.check_proofs():
             with self.subTest(p=p['id']): self.assertTrue(p['passed'],p)

@@ -79,13 +79,17 @@ dated 2 November 1643, contains a numerical line that the original v1 key reads 
 `⟦291⟧ OF CURLAND`. Its printed addressee supports the new working `291 = DUKE`
 assignment. See [follow-up findings](FINDINGS.md) for the source image, comparison,
 and unresolved weapons alternatives. This external reference is counted separately.
+The latest additions, `303 = TWO` and `376 = BOTH`, are exploratory funeral-passage
+hypotheses; the working key and coverage counts are unchanged.
 
 ## Reading the output
 
 Uppercase letters mark decoder outputs; interspersed source prose is unchanged.
 `⟦n⟧` marks an unresolved number, `⟨∅:n⟩` a proposed null, `{WORD}` a working
-code, and `⟦n:guess?⟧` an exploratory hypothesis. Source annotations and graphical
-signs remain visible. The embedded date fields `6_` and `8_` are preserved;
+code, and `⟦n:guess?⟧` an exploratory hypothesis. In exploratory mode, `376`
+displays `⟦376:BOTH?⟧` as an alternative to its working proposed-null reading.
+Source annotations and graphical signs remain visible. The embedded date fields
+`6_` and `8_` are preserved;
 unencrypted continuations are included separately and excluded from cipher counts.
 
 ## Reproduce

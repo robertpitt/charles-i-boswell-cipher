@@ -1,8 +1,59 @@
 # Follow-up findings — 14 September 2026
 
-**An external cipher specimen now supports `291 = DUKE`.** The proposed weapons
-list remains unresolved. This update follows leads in a supplied research note;
-its reconstructed plaintext was treated as a set of hypotheses.
+**An external cipher specimen supports `291 = DUKE`.** The latest candidate
+review adds only `303 = TWO` and `376 = BOTH`, both exploratory. The proposed
+weapons list remains unresolved. Supplied research notes and candidate tables
+are treated as hypotheses, not authenticated plaintext.
+
+## New funeral leads: TWO and BOTH
+
+The latest supplied table offers two useful new candidates in the same passage.
+Each occurs **once**, in Charles's letter; neither occurs in Nicholas's extract.
+
+| Code | New candidate | Support and remaining uncertainty |
+| --- | --- | --- |
+| 303 | TWO | Precedes `291 40 = DUKE S`, followed by the father-and-uncle phrase. TWO fits the named pair, but there is no repeated use to distinguish it from another qualifier. |
+| 376 | BOTH | Follows that pair and precedes cleartext `deceased of happy memory`. BOTH fits, but the existing proposed-null interpretation also permits the phrase. |
+
+The unchanged source span is:
+
+```text
+303 291 40 his 34 44 29 hir &
+65 50 60 25 22 16 376 deceased of happy memory
+```
+
+Working output:
+
+```text
+⟦303⟧ {DUKE} S his F A T hir &
+U N K L E ⟨∅:16⟩ ⟨∅:376⟩ deceased of happy memory
+```
+
+Exploratory output:
+
+```text
+⟦303:TWO?⟧ {DUKE} S his F A T hir &
+U N K L E ⟨∅:16⟩ ⟦376:BOTH?⟧ deceased of happy memory
+```
+
+Both candidates are recorded in `partial_key.json`. Exploratory mode tests BOTH
+in place of the proposed null; working mode keeps `303` unresolved and `376`
+marked as a proposed null. These are two inferences from **one context**, not
+independent confirmations of each other. No source spelling is repaired and
+neither candidate is added to the proof passages.
+
+The other suggestions do not justify new selected key values. Several repeat
+existing hypotheses; the remaining plausible words lack a distinguishing
+constraint. Two stronger claims conflict with the current transcription:
+`and` completes `CURLand`, followed by `S ⟦873⟧ M A S □ T E R`, which does not
+recover AND SEMIGALLIA; and `591 = DGE` would append DGE to already-complete
+ACKNOWLEDGE and produce ACDGE at its second occurrence. These claims are not
+added to the key. [Published transcription](https://cryptiana.blogspot.com/2021/09/charles-i-boswell-cipher-1643.html).
+
+All three output modes were regenerated. Only Charles's exploratory reading
+changes, at `303` and `376`; the two committed working outputs remain identical
+to v2. Working coverage remains **48 unresolved numerical occurrences** and
+**15 unresolved graphical occurrences**. The proposed-null count remains 51.
 
 ## A separate letter from the same date
 
@@ -114,6 +165,8 @@ comparison; they are not silently substituted into the output.
 ```sh
 python3 -m unittest -v test_decoder.py
 python3 verify_independently.py
+python3 concordance.py 303 376
+python3 decode_boswell.py --document Charles --mode exploratory
 python3 concordance.py 755 188 539 639 228 291 873 --include-external
 python3 decode_boswell.py --audit generated
 ```
@@ -124,19 +177,20 @@ It searches only the two supplied extracts and, optionally, the two external
 reference spans; it is not a search of an entire archival collection.
 
 In the original corpus, `291` occurs twice and `873` six times; each other code
-in the command occurs once. Three occurrences of `873` appear with nearby
+in these commands occurs once. Three occurrences of `873` appear with nearby
 graphical signs, two are bare, and one has an `r` suffix. Their interpretation
 may depend on those signs; counting them together does not establish a single
 word value.
 
-This iteration checked the linked historical sources, the 1893 correspondence,
-and Cryptiana's unsolved-cipher and Stuart-cipher surveys. It found the external
+The earlier research checked the linked historical sources, the 1893
+correspondence, and Cryptiana's unsolved-cipher and Stuart-cipher surveys. It found the external
 `291` example above, but no second specimen resolving a weapons code or `228`.
 The supplied CORE PDF could not be retrieved and is not relied on here.
 
 The most useful next evidence is a manuscript image or a related key: inspect
 the `212`/`213` intermediary references, the graphical forms surrounding `873`,
 and the two disputed letters in `FIRXSS`. Original target inputs remain
-unchanged. The one adopted code change reduces unresolved numerical occurrences
-from 50 to **48**, with all 15 graphical occurrences still unresolved. The
+unchanged. The earlier adoption of `291 = DUKE` reduced unresolved numerical
+occurrences from 50 to **48**; the new funeral hypotheses do not change that
+working count. All 15 graphical occurrences remain unresolved. The
 external reference is counted separately; no complete solution is claimed.

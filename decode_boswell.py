@@ -44,8 +44,6 @@ def value_for(n: int, mode: str='working') -> tuple[str,str,str]:
     if s in KEY['additional_letters']:
         entry=KEY['additional_letters'][s]
         return entry['output'].upper(),'additional_letter',entry['evidence']
-    if n in KEY['proposed_nulls']:
-        return '','proposed_null',KEY['null_caveat']
     if s in KEY['working_word_codes']:
         entry=KEY['working_word_codes'][s]
         return entry['output'].upper(),'working_word_code',entry['evidence']
@@ -57,6 +55,9 @@ def value_for(n: int, mode: str='working') -> tuple[str,str,str]:
             entry=KEY['word_code_hypotheses'][s]
             if entry['output']:
                 return entry['output'].upper(),'word_code_hypothesis',entry['evidence']
+    # Exploratory hypotheses can compete with a proposed null (currently 376).
+    if n in KEY['proposed_nulls']:
+        return '','proposed_null',KEY['null_caveat']
     return f'⟦{n}⟧','unresolved_numeric','No adopted value; do not fill from narrative expectations.'
 
 
