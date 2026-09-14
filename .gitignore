@@ -1,0 +1,8 @@
+.evidence/
+generated/
+__pycache__/
+*.py[cod]
+.DS_Store
+*.html
+*.htm
+*.zip

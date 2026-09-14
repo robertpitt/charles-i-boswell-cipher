@@ -1,0 +1,342 @@
+{
+  "version": "2026-09-14 partial-breakthrough v1",
+  "claim": "Recovered systematic main alphabet with proposed additional letters, nulls and a few word codes. Not a complete authenticated decipherment.",
+  "core": {
+    "minimum": 20,
+    "maximum": 115,
+    "period": 24,
+    "row": "acegilnprtwybdfhkmoqsuxz",
+    "plain_alphabet": "abcdefghiklmnopqrstuwxyz",
+    "note": "The row is odd-indexed alphabet positions followed by even-indexed positions (one-based). Formula predicts all 96 entries; only 80 are represented in the published extract. Individual anomalous occurrences remain."
+  },
+  "additional_letters": {
+    "116": {
+      "output": "a",
+      "evidence_class": "single-context",
+      "evidence": "MAS[box]TER; the box remains unresolved."
+    },
+    "117": {
+      "output": "d",
+      "evidence_class": "cross-context",
+      "evidence": "DO and GOOD in Nicholas."
+    },
+    "118": {
+      "output": "e",
+      "evidence_class": "cross-document",
+      "evidence": "USE, MEANES, HINDER, HERE; RECEIUE and SURE in Charles."
+    },
+    "120": {
+      "output": "m",
+      "evidence_class": "cross-context",
+      "evidence": "TRANSMIT in Charles; also COM in the unresolved 854e COM ly passage."
+    },
+    "121": {
+      "output": "n",
+      "evidence_class": "cross-document",
+      "evidence": "APPREHENDED; the final RE(D)ENTIALS-like sequence."
+    },
+    "122": {
+      "output": "o",
+      "evidence_class": "cross-document",
+      "evidence": "FOR in Nicholas; CO[graphic]US... and YOUR... in Charles."
+    },
+    "123": {
+      "output": "r",
+      "evidence_class": "cross-document",
+      "evidence": "HINDER and HERE; OFFERS, RECEIUE, TRANSMIT, and OUR."
+    },
+    "124": {
+      "output": "s",
+      "evidence_class": "cross-context",
+      "evidence": "OFFERS and SHALL in Charles."
+    },
+    "125": {
+      "output": "t",
+      "evidence_class": "single-context",
+      "evidence": "T + cleartext he + tentative 126=Y."
+    },
+    "129": {
+      "output": "e",
+      "evidence_class": "cross-context",
+      "evidence": "APPREHENDED and HERE in Nicholas."
+    },
+    "132": {
+      "output": "o",
+      "evidence_class": "single-context",
+      "evidence": "O F in the opening date; the numeric date fields themselves are not nulls."
+    },
+    "134": {
+      "output": "t",
+      "evidence_class": "cross-context",
+      "evidence": "THOSE and TRANSMIT; T + uncertain cleartext be* in the date."
+    },
+    "135": {
+      "output": "u",
+      "evidence_class": "cross-context",
+      "evidence": "ARRIUD and YOUR...; U/V are not separated by this model."
+    },
+    "138": {
+      "output": "e",
+      "evidence_class": "cross-document",
+      "evidence": "RECEIUE and APPREHENDED."
+    },
+    "141": {
+      "output": "r",
+      "evidence_class": "single-context",
+      "evidence": "F O R immediately before cleartext it."
+    },
+    "146": {
+      "output": "e",
+      "evidence_class": "single-context",
+      "evidence": "R E [362] + cleartext all."
+    },
+    "147": {
+      "output": "i",
+      "evidence_class": "single-context",
+      "evidence": "I S HERE after cleartext it."
+    },
+    "148": {
+      "output": "o",
+      "evidence_class": "single-context",
+      "evidence": "O U R before cleartext said."
+    },
+    "149": {
+      "output": "r",
+      "evidence_class": "cross-context",
+      "evidence": "WHIT.HER and RE[362]ALL."
+    },
+    "150": {
+      "output": "s",
+      "evidence_class": "cross-document",
+      "evidence": "IS in Nicholas; SAME in Charles. Also U[+]S, with the graphic unresolved."
+    },
+    "151": {
+      "output": "u",
+      "evidence_class": "single-context",
+      "evidence": "O U R before cleartext said."
+    },
+    "153": {
+      "output": "a",
+      "evidence_class": "cross-document",
+      "evidence": "ACCEPT[381]ABLE and APPREHENDED."
+    },
+    "154": {
+      "output": "e",
+      "evidence_class": "cross-context",
+      "evidence": "WE made... and FREE."
+    },
+    "159": {
+      "output": "y",
+      "evidence_class": "single-context",
+      "evidence": "Cleartext prince + L Y + null candidates."
+    }
+  },
+  "tentative_letters": {
+    "0": {
+      "output": "o",
+      "evidence": "The single zero in P0SSIBLE may be a plaintext O or a cipher homophone, not a null."
+    },
+    "126": {
+      "output": "y",
+      "evidence": "Gives THEY in Nicholas; the other occurrence in Charles remains in an anomalous ESY sequence."
+    },
+    "127": {
+      "output": "a",
+      "evidence": "Opening COMAND[142] in Nicholas; the exact ending is unresolved."
+    },
+    "128": {
+      "output": "d",
+      "evidence": "Opening COMAND[142] in Nicholas; the exact ending is unresolved."
+    },
+    "131": {
+      "output": "n",
+      "evidence": "MONARCY in Nicholas and COMAND[142]. MONARCY lacks an H compared with the modern spelling."
+    },
+    "145": {
+      "output": "a",
+      "evidence": "Produces AFFENT, not AFFECT. Interpreting this as AFFECT requires a local correction to the already-flagged 98*."
+    },
+    "158": {
+      "output": "u",
+      "evidence": "Produces U[+]S, but the graphical symbol is unresolved."
+    }
+  },
+  "proposed_nulls": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    8,
+    10,
+    11,
+    12,
+    14,
+    15,
+    16,
+    17,
+    18,
+    361,
+    362,
+    364,
+    374,
+    376,
+    377,
+    380,
+    381,
+    386
+  ],
+  "null_caveat": "These are proposed nulls, not a recovered physical key. 6_ and 8_ in the date are excluded from null treatment. Unobserved members of 1–19 or 360–389 are NOT asserted as solved. Graphic signs are NOT discarded.",
+  "working_word_codes": {
+    "588": {
+      "output": "of",
+      "evidence_class": "cross-document",
+      "evidence": "Appears in both letters in prepositional positions; also OF F E R S yields OFFERS."
+    },
+    "800": {
+      "output": "to",
+      "evidence_class": "cross-document",
+      "evidence": "Repeated in both letters before infinitives, recipients, and destinations."
+    },
+    "835": {
+      "output": "un",
+      "evidence_class": "single-context",
+      "evidence": "UN + D E R + cleartext stand gives UNDERSTAND."
+    }
+  },
+  "word_code_hypotheses": {
+    "170": {
+      "output": "admiralty",
+      "evidence": "Single occurrence: by the MEANES OF the [170]; institution not yet identified."
+    },
+    "177": {
+      "output": "also",
+      "evidence": "Single occurrence after THANKS and before on this behalf; many readings possible."
+    },
+    "181": {
+      "output": "anabaptist",
+      "evidence": "Single occurrence with plural S after coming-over-like text. This is only a conjecture; the group is NOT identified."
+    },
+    "185": {
+      "output": "assistance",
+      "evidence": "Single occurrence before a possible list of supplies. Not cryptographically established."
+    },
+    "188": {
+      "output": "arms",
+      "evidence": "Possible supplies list only."
+    },
+    "190": {
+      "output": "are",
+      "evidence": "THEY [190] understood HERE NOT..."
+    },
+    "205": {
+      "output": "",
+      "evidence": "Unresolved, before OUR said..."
+    },
+    "213": {
+      "output": "",
+      "evidence": "Unresolved, after cleartext addres by. Could identify an intermediary."
+    },
+    "223": {
+      "output": "by",
+      "evidence": "Cleartext there + [223] + HIGHLY OBLIGED suggests THEREBY."
+    },
+    "228": {
+      "output": "Bristol",
+      "evidence": "Possible fifth port in a list. It is not decoded letter-by-letter and is not confirmed."
+    },
+    "289": {
+      "output": "",
+      "evidence": "Unresolved after ARRIUD and before cleartext safe."
+    },
+    "291": {
+      "output": "duke",
+      "evidence": "Two occurrences: [291] OF CURLand and the late [303] [291] S. Title remains a word-code inference."
+    },
+    "303": {
+      "output": "",
+      "evidence": "Unresolved, before probable DUKE S. Do not silently expand to two."
+    },
+    "406": {
+      "output": "bounte",
+      "evidence": "Possible prefix before cleartext ous. Not established."
+    },
+    "484": {
+      "output": "I am",
+      "evidence": "Formulaic inference for Nicholas opening; following COMAND[142] is not fully recovered."
+    },
+    "514": {
+      "output": "",
+      "evidence": "Unresolved adjective/qualifier before probable LETTER."
+    },
+    "516": {
+      "output": "letter",
+      "evidence": "Two occurrences, but singular/plural value is not independently verified."
+    },
+    "539": {
+      "output": "musket",
+      "evidence": "Possible supplies list; following S may be a plural ending."
+    },
+    "591": {
+      "output": "",
+      "evidence": "Unresolved. TION fits one location but not the other; it has deliberately NOT been adopted."
+    },
+    "629": {
+      "output": "pray",
+      "evidence": "Formulaic request before cleartext you therefore."
+    },
+    "636": {
+      "output": "",
+      "evidence": "Unresolved. Its attached por text is also uncertain."
+    },
+    "639": {
+      "output": "powder",
+      "evidence": "Possible supplies list after MATCH. Not established."
+    },
+    "640": {
+      "output": "port",
+      "evidence": "Probable category before OF and the place-name sequence. Singular/plural uncertain."
+    },
+    "726": {
+      "output": "",
+      "evidence": "Unresolved origin after cleartext from y^w."
+    },
+    "746": {
+      "output": "",
+      "evidence": "Unresolved word or stem before LY; do not present secret/seasonable as deciphered."
+    },
+    "749": {
+      "output": "self",
+      "evidence": "Possible formula acknowledge [591] [749] thereby; depends on unresolved 591."
+    },
+    "750": {
+      "output": "send",
+      "evidence": "Possible formula herewith [750] YOUR...; single occurrence."
+    },
+    "755": {
+      "output": "",
+      "evidence": "Unresolved, in possible supplies list."
+    },
+    "851": {
+      "output": "which",
+      "evidence": "TO [851] WE made an... suggests WHICH."
+    },
+    "854": {
+      "output": "will",
+      "evidence": "Strong in Nicholas THEY [854] DO, but applying it unchanged in Charles yields WILLeCOMly. Conflict retained."
+    },
+    "873": {
+      "output": "you",
+      "evidence": "Unadorned YOU/YOU+r plausible; repeated graphic-enclosed occurrences are NOT explained by this assignment."
+    }
+  },
+  "graphics": "Unresolved: △, 中, □, +, ＋. Modifiers may matter. No graphical sign is assigned a null or word value.",
+  "unknown_numeric_codes": [
+    142
+  ],
+  "dates": [
+    "6_",
+    "8_"
+  ]
+}
