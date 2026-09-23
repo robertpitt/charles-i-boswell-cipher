@@ -1,5 +1,5 @@
 {
-  "version": "2026-09-23 partial-breakthrough v4",
+  "version": "2026-09-23 partial-breakthrough v5",
   "claim": "Recovered systematic main alphabet with proposed additional letters, nulls and a few word codes. Not a complete authenticated decipherment.",
   "core": {
     "minimum": 20,
@@ -312,17 +312,26 @@
       ]
     },
     "484": {
-      "output": "His Majesty",
-      "evidence": "Replace the poorly fitting I AM candidate. HIS MAJESTY COMANDS TO SIGNIAY HIS pleasure fits the royal instruction better, but the verb remains SIGNIAY and an expected ME is absent. One occurrence; do not insert missing words.",
+      "output": "I have",
+      "evidence": "I HAVE COMANDS TO SIGNIAY HIS pleasure fits the opening without supplying ME or changing the working 142=S. Grammatical hypothesis only, not independently attested; SIGNIAY remains anomalous. HIS MAJESTY and I AM are retained as alternatives, not combined with this reading.",
+      "evidence_class": "single-context-hypothesis",
       "reviewed": "2026-09-23",
-      "source_url": "https://dbourdeau.github.io/cyphersolver/boswell.html",
       "alternatives": [
+        "His Majesty",
         "I am"
-      ]
+      ],
+      "alternative_source_url": "https://dbourdeau.github.io/cyphersolver/boswell.html"
     },
     "514": {
       "output": "",
-      "evidence": "Unresolved adjective/qualifier before probable LETTER."
+      "evidence": "Unresolved qualifier before working LETTER. Under the unverified initial-order model, the neighbouring anchors 291=DUKE and 516=LETTER permit D through L: LATE, LAST and LATER fit, OTHER does not. This conditional test selects no word. See FINDINGS.md.",
+      "alternatives": [
+        "other",
+        "late",
+        "last",
+        "later"
+      ],
+      "reviewed": "2026-09-23"
     },
     "539": {
       "output": "musket",
@@ -389,12 +398,16 @@
     },
     "755": {
       "output": "",
-      "evidence": "Unresolved, in possible supplies list. A new history-led crib proposes MUSKETS; no repetition in the two-letter corpus establishes the word. The St Andrews arms list and later correspondence support the topic, not these numerical assignments. See FINDINGS.md.",
+      "evidence": "Unresolved in the supply passage; not necessarily a separate list item. Under the unverified initial-order model, 588=OF and 800=TO permit O through T, so SHIPS and SHOT fit while MUSKET(S) does not. Cocheran letter XIV (printed under 1646, Simpson pp.163-164) mentions offered ships and iron shot, but is later correspondence, not a parallel plaintext or numerical key. No output selected. See FINDINGS.md.",
       "alternatives": [
         "musket",
-        "muskets"
+        "muskets",
+        "ships",
+        "shot"
       ],
-      "source_url": "https://www.st-andrews.ac.uk/history/ssne/item.php?id=1490"
+      "source_url": "https://www.st-andrews.ac.uk/history/ssne/item.php?id=1490",
+      "reviewed": "2026-09-23",
+      "additional_source_url": "https://archive.org/details/miscellanyofscot01scot/page/163/mode/1up"
     },
     "851": {
       "output": "which",

@@ -1,13 +1,15 @@
 # Findings and unresolved questions
 
-Reviewed **23 September 2026**, key v4. **The decipherment is still partial.**
-This pass adds working readings at 12 numerical and 11 graphical occurrences.
+Reviewed **23 September 2026**, key v5. **The decipherment is still partial.**
+The v4 pass added working readings at 12 numerical and 11 graphical occurrences.
+The v5 follow-up tests the remaining candidates; it establishes no additional
+working assignments. Its new opening and supply candidates remain exploratory.
 There remain **36 unresolved numerical occurrences** (27 Charles, 9 Nicholas)
 and **four graphics with unresolved textual roles**. These figures describe
 mapping coverage, not accuracy; 51 proposed-null occurrences and several damaged
 passages also need verification.
 
-## New working readings
+## Working readings added in v4
 
 | Assignment | Occurrences | Evidence and limitation |
 | --- | ---: | --- |
@@ -100,8 +102,8 @@ The exact source positions are available through `concordance.py` and the audit.
 | 289 | 1 | Between ARRIUD and “safe”; needs a second use or clearer manuscript. |
 | 303 | 1 | TWO fits DUKE S followed by father and uncle; only one shared funeral context. |
 | 406 | 1 | Stem before source “ous”; GENER now selected for exploration, BOUNTE retained as an alternative. |
-| 484 | 1 | HIS MAJESTY fits the opening better than the former I AM guess; the following COMANDS TO SIGNIAY still has problems. |
-| 514 | 1 | Qualifier before LETTER; OTHER plausible, but no repetition. |
+| 484 | 1 | I HAVE is now preferred for exploration: I HAVE COMANDS TO SIGNIAY HIS pleasure. Unlike HIS MAJESTY, it needs no supplied ME; SIGNIAY remains anomalous. |
+| 514 | 1 | Qualifier before LETTER. LATE, LAST or LATER fit the conditional initial-letter ordering; OTHER conflicts with that model. None is established. |
 | 539 | 1 | Supply before separate S; both MUSKET and CANNON permit the plural. |
 | 591 | 2 | OUR fits the acknowledgement; courtesy requires the separate `&` correction discussed above. |
 | 629 | 1 | Request verb before “you therefore”; PRAY and REQUIRE compete. |
@@ -112,7 +114,7 @@ The exact source positions are available through `concordance.py` and the audit.
 | 746 | 1 | Stem before LY and TO HINDER; SECRET plausible, other adverbs possible. |
 | 749 | 1 | SELVES fits with 591=OUR; this pair shares one context. |
 | 750 | 1 | SEND fits “herewith”; the following credentials-like text is anomalous. |
-| 755 | 1 | First supply-list entry; insufficient evidence to choose MUSKET(S), STORE, or another item. |
+| 755 | 1 | Supply-passage code. SHIPS and SHOT are new conditional candidates; MUSKET(S) conflicts with the initial-letter model below. The code need not denote a separate list item. |
 | 851 | 1 | WHICH could refer to invitations; WHOM could refer to a person. |
 | 854 | 2 | WILL conflicts with the Charles suffix; see above. |
 | 873 | 6 | YOU/YOUR conflict; see above. |
@@ -123,10 +125,88 @@ shows BOTH. TWO and BOTH fit the named pair of deceased dukes, but the single
 funeral passage does not independently establish either value. Proposed nulls
 are assumptions, not proven omissions.
 
-The new AMBASSADOR/STATES pair is a historical lead from Bourdeau, not a numerical
+The AMBASSADOR/STATES pair is a historical lead from Bourdeau, not a numerical
 solution. His suggestions for HIS MAJESTY, GENER, PRO and SECRET likewise remain
-labelled hypotheses. The nomenclator may group words by initial, but an exact
-alphabetical order has not been recovered and is not used to force assignments.
+labelled hypotheses. I HAVE is an alternative to HIS MAJESTY developed in this
+follow-up, not an independently attested decipherment.
+
+## Further tests of the remaining codes
+
+### Nicholas's opening: 484
+
+The unchanged opening gives `[484] COMANDS TO SIGNIAY HIS pleasure`. Reading
+`484` as **I HAVE** supplies a subject and verb for COMANDS as a noun, without
+inserting ME or changing `142 = S`. This is a better grammatical candidate than
+I AM under the current key. HIS MAJESTY remains an alternative, with an implied
+or missing recipient of the command. None of these readings corrects SIGNIAY:
+the final three numbers `48 44 31` literally give IAY, whereas IFY would require
+a different middle number. No matching contemporary formula was found in the
+searched OCR of *Nicholas Papers*, volume I. I HAVE is selected only in
+exploratory mode.
+
+### A conditional test: ordering by initial letter
+
+The six working numerical word codes, in numerical order, begin with
+**B, D, L, O, T, U**:
+
+```text
+223 BY   291 DUKE   516 LETTER   588 OF   800 TO   835 UN
+```
+
+This supports testing a nomenclator grouped by initial, rather than assuming
+strict dictionary order within each initial. It is **not a recovered rule**:
+the anchors themselves are working readings, and exceptional entries or
+separate code sections could break the pattern. The following ranges are
+inclusive and use only those six anchors, not other guesses as premises.
+
+| Code | Allowed initial under this model | What the test changes |
+| --- | --- | --- |
+| 303 | D–L | TWO conflicts. Its historical fit does not validate the ordering model. |
+| 484 | D–L | Both I HAVE and HIS MAJESTY fit; ordering cannot choose between them. |
+| 514 | D–L | LATE/LAST/LATER fit; OTHER does not. These are competing qualifiers, not recovered words. |
+| 539 | L–O | MUSKET fits; CANNON does not. |
+| 629 | O–T | Both PRAY and REQUIRE fit; this test cannot decide the verb. |
+| 639 | O–T | POWDER fits; LEAD does not. |
+| 755 | O–T | SHIPS/SHOT fit; MUSKET(S) does not. The S initial is not uniquely determined. |
+
+The apparent inversions ARMS/ARE, POWDER/PORT and STATES/SECRET concern order
+*within* A, P and S. They would challenge strict dictionary order, but do not
+refute grouping by initial. Conversely, the conflict with TWO is a reason to
+keep this entire test conditional. It does not justify changing `303` to `803`,
+or changing any other source number to make a candidate fit.
+
+SHIPS and SHOT have a limited historical check: Cocheran's later letter to
+the Duke, printed as letter XIV, discusses offered ships and delivered iron
+shot. This makes them relevant vocabulary, not the solution of `755` in the
+1643 letter. Its three adjacent unknown codes need not be three separate
+items: one could be a modifier or conjunction. We retain the literal sequence
+and do not supply list punctuation as evidence.
+[Simpson, *Civil War Papers*, pp. 163–164](https://archive.org/details/miscellanyofscot01scot/page/163/mode/1up).
+
+### Additional sources checked
+
+- *Nicholas Papers*, volume I (1641–1652), did not yield either target letter
+  or a second use of its numerical codes in the searched OCR. The Boswell
+  passages found concern later correspondence. This is a search result, not
+  a claim that the manuscript collection lacks the letters.
+  [Warner's 1886 edition](https://archive.org/details/nicholaspapersco240nich).
+- The *Calendar of State Papers, Domestic, 1641–1643*, pp. 507–508, records
+  Nicholas to Roe, **27 December 1643**, reporting arms and powder arriving at
+  Dartmouth (SP 16/498/81). It corroborates the general supply context but
+  gives no Courland attribution or key for the November letter.
+  [Calendar, p. 507](https://archive.org/details/cu31924091770283/page/507/mode/1up).
+- Schiemann's 1886 survey describes Courland's English and Dutch archival
+  correspondence, including Wicquefort's reports from The Hague, 1641–1676.
+  The inspected discussion gives an additional archive route, not a parallel
+  plaintext of either target.
+  [*Historische Darstellungen*, pp. 183–184](https://archive.org/details/historischedars00schigoog).
+- Tomokiyo's reconstructed Scudamore key (1636) is not this alphabet:
+  `20 = G`, `24 = K`, and `44 = X`, against our A, I and A. Similar period
+  structure alone is insufficient to import its entries.
+  [Published comparison table](https://cryptiana.web.fc2.com/code/scudamore1636.jpg).
+
+These checks narrow useful hypotheses and rule out one suggested comparison
+key. They do not reduce the 36 unresolved numerical occurrences.
 
 ## External cipher evidence: DUKE
 
@@ -215,6 +295,13 @@ Its broad catalogue date range is 1646–1658 and its images require authenticat
 It is an untested lead, not an identified 1643 key. The public DECODE search for
 Boswell returned an unrelated 1628 record, not either target manuscript.
 [DECODE database](https://de-crypt.org/decrypt-web/RecordsList).
+
+Another catalogue lead is **Bodleian Library, MS Clarendon 94**, which CELM
+identifies as containing sixteen royalist cipher keys. Searches of Digital
+Bodleian's public data API for Clarendon, cipher and Boswell found no relevant
+digitised key. The separate archive catalogue returned a bot challenge. These
+are access/search limits, not a conclusion that no images exist elsewhere.
+[CELM manuscript reference](https://celm.folger.edu/introductions/ClarendonEdwardHyde.html).
 
 Catalogue details, retrieval hashes and research provenance are recorded in
 [input/research_evidence.json](input/research_evidence.json). No archive order,

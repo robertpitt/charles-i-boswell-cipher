@@ -46,6 +46,13 @@
       "catalogued_receiver": "Charles I, King of England",
       "catalogued_date_range": "1646–1658",
       "access": "Authentication required; images not examined. Catalogue lead only, no matching key claimed."
+    },
+    {
+      "reference": "Bodleian Library, MS Clarendon 94",
+      "url": "https://celm.folger.edu/introductions/ClarendonEdwardHyde.html",
+      "description": "CELM identifies sixteen royalist cipher keys in this volume. No match with the Boswell key is claimed.",
+      "access": "Not found among the 52 Digital Bodleian results for Clarendon; none of the four cipher or seven Boswell results was a relevant key. Separate archival catalogue returned a bot challenge; no challenge bypass attempted.",
+      "images_examined": false
     }
   ],
   "nearby_correspondence": [
@@ -70,5 +77,164 @@
       "description": "Folio 237: Boswell to Nicholas.",
       "url": "https://discovery.nationalarchives.gov.uk/details/r/C7305812"
     }
-  ]
+  ],
+  "follow_up_checks": [
+    {
+      "source": "The Nicholas Papers, volume I, 1641–1652 (Warner, 1886)",
+      "url": "https://archive.org/details/nicholaspapersco240nich",
+      "local_text_sha256": "317ef8df2b783266dc06b71c0e6a0aa34d260cd9ccb323faa74133e70f8a783d",
+      "method": "Searched OCR for Boswell, Courland/Curland and command/signify formulae.",
+      "result": "No target letter or matching code sequence located. Boswell passages found concern later correspondence. OCR search cannot establish absence from the manuscript collection."
+    },
+    {
+      "source": "Calendar of State Papers, Domestic, Charles I, 1641–1643 (1887), pp.507–508",
+      "url": "https://archive.org/details/cu31924091770283/page/507/mode/1up",
+      "local_text_sha256": "74a15c445abc1fbdc257f9eda8a057bcada9a0633764c6986f75b640341b5003",
+      "reference": "SP 16/498/81, Nicholas to Roe, 27 December 1643",
+      "result": "Calendar reports arms and powder arriving at Dartmouth. No Courland attribution or numerical code; contextual corroboration only. The earlier Nicholas-to-Boswell entry, 15 September 1642, pp.389–390, is SP 16/492/14."
+    },
+    {
+      "source": "Theodor Schiemann, Historische Darstellungen und archivalische Studien (1886), pp.183–184",
+      "url": "https://archive.org/details/historischedars00schigoog",
+      "local_text_sha256": "30c9d70976438b32ec9fbec858a9b5b19d0c71f7ef6e2c029470062d344f2420",
+      "result": "Describes English correspondence and Wicquefort reports from The Hague, 1641–1676. Archive route only; the inspected discussion supplies no parallel target text. Fraktur OCR is poor."
+    },
+    {
+      "source": "Tomokiyo, reconstructed Scudamore cipher (1636)",
+      "url": "https://cryptiana.web.fc2.com/code/scudamore1636.jpg",
+      "local_image_sha256": "3c9afdc2ff8b62b6345f624658f82a102081c7537cc625b566b3d23a2b1e1a2c",
+      "image_examined": true,
+      "comparison": [
+        {
+          "number": 20,
+          "Scudamore": "G",
+          "Boswell": "A"
+        },
+        {
+          "number": 24,
+          "Scudamore": "K",
+          "Boswell": "I"
+        },
+        {
+          "number": 44,
+          "Scudamore": "X",
+          "Boswell": "A"
+        }
+      ],
+      "result": "Different alphabet; do not import entries."
+    },
+    {
+      "source": "Digital Bodleian public data API",
+      "documentation_url": "https://digital.bodleian.ox.ac.uk/developer/data/",
+      "queries": [
+        {
+          "query": "Clarendon",
+          "results": 52,
+          "response_sha256": "0789d3c8836ed61f6e62a3542296285e6a599a4c5e0c7066431910829bea673f"
+        },
+        {
+          "query": "cipher",
+          "results": 4,
+          "response_sha256": "359960128038caa0e8921c5eb5c0a83ab1dca31e5edb62ebfc4f9a5d5344f263"
+        },
+        {
+          "query": "Boswell",
+          "results": 7,
+          "response_sha256": "f605f933fc16b90a42bda2c57519ec74ef3c4ddbda48e34843df6f7fbce6a7c2"
+        }
+      ],
+      "result": "No relevant digitised cipher key found in these returned results; not proof that no images exist elsewhere."
+    }
+  ],
+  "initial_order_test": {
+    "status": "Unverified structural hypothesis; never used by decoder to assign unknown values.",
+    "rule": "Word-code initials are nondecreasing with numerical value. Order within an initial is unrestricted.",
+    "anchors": {
+      "223": "by",
+      "291": "duke",
+      "516": "letter",
+      "588": "of",
+      "800": "to",
+      "835": "un"
+    },
+    "cases": [
+      {
+        "code": 303,
+        "allowed_initials": "D–L",
+        "compatible": [],
+        "incompatible": [
+          "two"
+        ]
+      },
+      {
+        "code": 484,
+        "allowed_initials": "D–L",
+        "compatible": [
+          "I have",
+          "His Majesty"
+        ],
+        "incompatible": []
+      },
+      {
+        "code": 514,
+        "allowed_initials": "D–L",
+        "compatible": [
+          "late",
+          "last",
+          "later"
+        ],
+        "incompatible": [
+          "other"
+        ]
+      },
+      {
+        "code": 539,
+        "allowed_initials": "L–O",
+        "compatible": [
+          "musket"
+        ],
+        "incompatible": [
+          "cannon"
+        ]
+      },
+      {
+        "code": 629,
+        "allowed_initials": "O–T",
+        "compatible": [
+          "pray",
+          "require"
+        ],
+        "incompatible": []
+      },
+      {
+        "code": 639,
+        "allowed_initials": "O–T",
+        "compatible": [
+          "powder"
+        ],
+        "incompatible": [
+          "lead"
+        ]
+      },
+      {
+        "code": 755,
+        "allowed_initials": "O–T",
+        "compatible": [
+          "ships",
+          "shot"
+        ],
+        "incompatible": [
+          "musket",
+          "muskets"
+        ]
+      }
+    ],
+    "limitations": [
+      "Six working anchors are not a recovered historical codebook.",
+      "TWO conflicts with the model; no numeric transcription change is licensed by that conflict.",
+      "Within-initial inversions in proposed ARMS/ARE, POWDER/PORT and STATES/SECRET do not refute initial grouping.",
+      "Compatible means passes this conditional test, not deciphered.",
+      "Each unknown in the supply passage need not denote a separate list item."
+    ]
+  }
 }

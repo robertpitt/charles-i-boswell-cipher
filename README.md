@@ -95,9 +95,13 @@ dated 2 November 1643, contains a numerical line that the original v1 key reads 
 assignment. See [follow-up findings](FINDINGS.md) for the source image, comparison,
 and unresolved weapons alternatives. This external reference is counted separately.
 `303 = TWO` and `376 = BOTH` are exploratory funeral-passage hypotheses.
-The 23 September update adds LETTER, BY, seven letter readings and the
+The 23 September v4 update adds LETTER, BY, seven letter readings and the
 standalone signs GOOD, COUSIN, MASTER and US as working inferences. OUR/SELVES
 is a useful new lead, but the second OUR occurrence needs a transcription check.
+The v5 follow-up prefers I HAVE for the exploratory Nicholas opening and tests
+word-code candidates against a conditional initial-letter ordering. It adds no
+working assignments; the unresolved counts are unchanged. See the
+[candidate tests and additional sources](FINDINGS.md#further-tests-of-the-remaining-codes).
 See the [remaining values](FINDINGS.md#complete-list-of-unresolved-numerical-values)
 and [identified manuscripts](FINDINGS.md#manuscripts-and-the-route-to-completion).
 
