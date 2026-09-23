@@ -1,6 +1,10 @@
 """Reproducibility and preservation tests, not historical authentication."""
 import unittest
 import json
+from copy import deepcopy
+from pathlib import Path
+from tempfile import TemporaryDirectory
+from unittest.mock import patch
 import concordance
 import decode_boswell as d
 
@@ -76,5 +80,48 @@ class DecoderTests(unittest.TestCase):
         counts=Counter(r['number'] for name,doc in d.SOURCES['documents'].items()
                        for r in concordance.find_occurrences(doc['cipher_bearing_extract'],codes,name))
         self.assertEqual(dict(counts),{755:1,188:1,539:1,639:1,228:1,291:2,873:6})
+    def test_full_published_inputs_and_outputs(self):
+        d.validate_sources()
+        for result in d.check_outputs():
+            with self.subTest(document=result['document']):
+                self.assertTrue(result['passed'])
+    def test_regeneration_detects_stale_or_missing_outputs(self):
+        with TemporaryDirectory() as folder:
+            root=Path(folder)
+            (root/'input').mkdir()
+            for name in d.SOURCES['documents']:
+                filename=f'{name.lower()}.txt'
+                (root/'input'/filename).write_bytes((d.ROOT/'input'/filename).read_bytes())
+            (root/'proof_passages.json').write_bytes((d.ROOT/'proof_passages.json').read_bytes())
+            with patch.object(d,'ROOT',root):
+                self.assertFalse(any(item['passed'] for item in d.check_outputs()))
+                d.write_outputs()
+                self.assertTrue(all(item['passed'] for item in d.check_outputs()))
+                path=root/'output/charles.txt'
+                path.write_text('stale output',encoding='utf-8')
+                self.assertEqual(d.check_outputs(),[
+                    {'document':'Charles','passed':False},
+                    {'document':'Nicholas','passed':True},
+                ])
+                d.write_outputs()
+                d.create_audit(root/'audit')
+                for name in d.SOURCES['documents']:
+                    self.assertEqual((root/'output'/f'{name.lower()}.txt').read_bytes(),
+                                     (root/'audit'/f'{name.lower()}_working_literal.txt').read_bytes())
+                # A changed continuation in the readable copy must block writes.
+                path=root/'input/nicholas.txt'
+                path.write_bytes(path.read_bytes()+b'changed continuation')
+                before=(root/'output/charles.txt').read_bytes()
+                with self.assertRaisesRegex(ValueError,'Readable input differs'):
+                    d.write_outputs()
+                self.assertEqual((root/'output/charles.txt').read_bytes(),before)
+    def test_source_corruption_blocks_audit_before_writing(self):
+        sources=deepcopy(d.SOURCES)
+        sources['documents']['Charles']['cipher_bearing_extract']+=' altered'
+        with TemporaryDirectory() as folder, patch.object(d,'SOURCES',sources):
+            destination=Path(folder)/'audit'
+            with self.assertRaisesRegex(ValueError,'Source checksum failed: Charles'):
+                d.create_audit(destination)
+            self.assertFalse(destination.exists())
 
 if __name__=='__main__': unittest.main()

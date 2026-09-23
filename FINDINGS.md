@@ -1,13 +1,14 @@
-# Follow-up findings — 14 September 2026
+# Findings and unresolved questions
 
-**An external cipher specimen supports `291 = DUKE`.** The latest candidate
-review adds only `303 = TWO` and `376 = BOTH`, both exploratory. The proposed
-weapons list remains unresolved. Supplied research notes and candidate tables
+Reviewed **23 September 2026**. The historical evidence and candidate review
+below were assembled on 14 September; the cleanup review adds no deciphered
+values. **An external cipher specimen supports `291 = DUKE`.** `303 = TWO` and
+`376 = BOTH` remain exploratory. Supplied research notes and candidate tables
 are treated as hypotheses, not authenticated plaintext.
 
-## New funeral leads: TWO and BOTH
+## Funeral leads: TWO and BOTH
 
-The latest supplied table offers two useful new candidates in the same passage.
+The supplied candidate table offers two useful leads in the same passage.
 Each occurs **once**, in Charles's letter; neither occurs in Nicholas's extract.
 
 | Code | New candidate | Support and remaining uncertainty |
@@ -50,10 +51,10 @@ recover AND SEMIGALLIA; and `591 = DGE` would append DGE to already-complete
 ACKNOWLEDGE and produce ACDGE at its second occurrence. These claims are not
 added to the key. [Published transcription](https://cryptiana.blogspot.com/2021/09/charles-i-boswell-cipher-1643.html).
 
-All three output modes were regenerated. Only Charles's exploratory reading
-changes, at `303` and `376`; the two committed working outputs remain identical
-to v2. Working coverage remains **48 unresolved numerical occurrences** and
-**15 unresolved graphical occurrences**. The proposed-null count remains 51.
+The v3 key changes only Charles's exploratory reading, at `303` and `376`.
+The two committed working outputs remain identical to v2. Working coverage
+remains **48 unresolved numerical occurrences** and **15 unresolved graphical
+occurrences**. The proposed-null count remains 51.
 
 ## A separate letter from the same date
 
@@ -80,15 +81,15 @@ This also fits both occurrences of `291` in the target Charles letter: before
 [Printed page 149](https://archive.org/details/miscellanyofscot01scot/page/149/mode/1up),
 [page image](https://iiif.archive.org/iiif/miscellanyofscot01scot$247/full/1600,/0/default.jpg).
 
-`291 = DUKE` is therefore promoted from exploratory to **working**. The exact
-printed sequences, baseline result, source details, and image hash are recorded
+`291 = DUKE` was therefore promoted from exploratory to **working** in v2.
+The exact printed sequences, baseline result, source details, and image hash are recorded
 in [input/external_evidence.json](input/external_evidence.json). The image was
 visually checked; the original manuscript was not. The edition warns that its
 transcription may contain errors. This is an external consistency check, found
 through the Courland lead, rather than a blind accuracy test or a recovered key.
 
-The new letter says an envoy's credentials and message reached the king through
-`212, 364,` and that the king is sending a reply and re-credentials. That is
+The external letter says an envoy's credentials and message reached the king
+through `212, 364,` and that the king is sending a reply and re-credentials. That is
 consistent with the target Nicholas letter's mention of two enclosed royal
 letters, but a shared packet is **not established**. Neither `212` nor the
 target letter's `213` has been identified, and they must not be conflated.
@@ -160,16 +161,41 @@ comparison; they are not silently substituted into the output.
   No source numeral or alphabet assignment has been altered to obtain it.
   [Latvian archives, foreign relations, item 1](https://www.archiv.org.lv/jekabs/?lang=en&page=206).
 
+## Remaining evidence
+
+The working result still contains 32 unresolved numerical occurrences in Charles
+and 16 in Nicholas. No further assignment was established in the cleanup review.
+The strongest next checks concern repeated codes and the provisional transcription:
+
+| Target | Current constraint | Evidence needed |
+| --- | --- | --- |
+| `873` (6 occurrences) and nearby graphics | Bare, suffixed, and graphic-enclosed forms may differ; YOU does not explain them all. | Manuscript images showing the actual symbols and their boundaries. |
+| `854` (2 occurrences, both letters) | WILL fits Nicholas's tentative THEY … DO, but gives `WILLeCOMly` in Charles. | Inspect the Charles numeral and adjacent cleartext before selecting one value. |
+| `591` (2 occurrences) | A value must fit both `ACKNOWLEDGE [591] [749]` and `AC [591]`; DGE fails. | A clearer transcription or a matching key covering both uses. |
+| `303`, `376` (1 occurrence each) | TWO and BOTH fit a single shared context; `376` may still be null. | A second occurrence or a historical key that distinguishes the alternatives. |
+| Supplies, `228`, and Nicholas's `170`, `181`, `726` | Context suggests categories but does not identify the words, place, institution, or group. | Another letter using these codes or a matching nomenclator. |
+| `212`/`213`, `FIRXSS`, and the final credentials-like passage | Proposed identities and spelling repairs are not established. | Original numeral and letter forms; keep possible transcription corrections separate from key changes. |
+
+The original target manuscript references and a matching historical key have
+not been established. A full decipherment requires additional evidence; the
+repository makes the current partial result reproducible and the gaps explicit.
+
 ## Reproduce and continue
 
 ```sh
 python3 -m unittest -v test_decoder.py
 python3 verify_independently.py
+python3 decode_boswell.py --check
 python3 concordance.py 303 376
 python3 decode_boswell.py --document Charles --mode exploratory
 python3 concordance.py 755 188 539 639 228 291 873 --include-external
 python3 decode_boswell.py --audit generated
 ```
+
+The checks cover input integrity, complete committed outputs, and the disclosed
+passage examples. To refresh `output/` after an intentional key change, run
+`python3 decode_boswell.py --write-outputs`, then rerun the checks. Audit
+generation and published outputs share a renderer, preserving the same notation.
 
 The concordance searches exact numerical tokens and preserves suffixes,
 punctuation, source offsets, and context. It loads no key or proposed plaintext.
@@ -183,14 +209,10 @@ may depend on those signs; counting them together does not establish a single
 word value.
 
 The earlier research checked the linked historical sources, the 1893
-correspondence, and Cryptiana's unsolved-cipher and Stuart-cipher surveys. It found the external
-`291` example above, but no second specimen resolving a weapons code or `228`.
+correspondence, and Cryptiana's unsolved-cipher and Stuart-cipher surveys. It
+found the external `291` example above, but no second specimen resolving a
+weapons code or `228`.
 The supplied CORE PDF could not be retrieved and is not relied on here.
 
-The most useful next evidence is a manuscript image or a related key: inspect
-the `212`/`213` intermediary references, the graphical forms surrounding `873`,
-and the two disputed letters in `FIRXSS`. Original target inputs remain
-unchanged. The earlier adoption of `291 = DUKE` reduced unresolved numerical
-occurrences from 50 to **48**; the new funeral hypotheses do not change that
-working count. All 15 graphical occurrences remain unresolved. The
-external reference is counted separately; no complete solution is claimed.
+Original target inputs remain unchanged. The external reference is counted
+separately from the two-letter corpus; no complete solution is claimed.

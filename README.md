@@ -33,8 +33,20 @@ inputs. It is not extended beyond 115.
 The **working** key adds 24 explicitly listed letter assignments, 24 proposed
 null values (numbers assumed to contribute no text), and four word, syllable,
 or title codes: `588 = OF`, `800 = TO`, `835 = UN`, and `291 = DUKE`.
-Each additional assignment has its evidence in the key file; some rely on a single context. Further guesses
-are confined to **exploratory** mode.
+Each additional assignment has its evidence in the key file; some rely on a
+single context. Further guesses are confined to **exploratory** mode.
+
+## What the letters say
+
+Charles's letter concerns the Duke of Courland, family funerals, offers of help,
+thanks, and delivery destinations. Nicholas's letter appears to instruct the
+recipient to hinder the coming over of an unidentified group. Its cleartext
+says that two enclosed royal letters use the recipient's cipher and must be
+deciphered and interpreted.
+
+This is a summary of the cleartext and partial readings. The exact supplies,
+the unidentified group and its origin, and several phrases remain unresolved.
+The repository is a reproducible research result, not a complete plaintext.
 
 ## Decoded examples and findings
 
@@ -76,11 +88,12 @@ such as `PHEN`, `SIGNIAY`, and `DAR&MOUTH` are retained. The group mentioned in
 Nicholas's letter, proposed supplies in Charles's letter, and a possible fifth
 port are not established by this key. A separate letter printed in 1893, also
 dated 2 November 1643, contains a numerical line that the original v1 key reads as
-`⟦291⟧ OF CURLAND`. Its printed addressee supports the new working `291 = DUKE`
+`⟦291⟧ OF CURLAND`. Its printed addressee supports the working `291 = DUKE`
 assignment. See [follow-up findings](FINDINGS.md) for the source image, comparison,
 and unresolved weapons alternatives. This external reference is counted separately.
-The latest additions, `303 = TWO` and `376 = BOTH`, are exploratory funeral-passage
-hypotheses; the working key and coverage counts are unchanged.
+`303 = TWO` and `376 = BOTH` are exploratory funeral-passage hypotheses.
+See the [remaining questions](FINDINGS.md#remaining-evidence) for the evidence
+needed to advance beyond this partial result.
 
 ## Reading the output
 
@@ -89,27 +102,45 @@ Uppercase letters mark decoder outputs; interspersed source prose is unchanged.
 code, and `⟦n:guess?⟧` an exploratory hypothesis. In exploratory mode, `376`
 displays `⟦376:BOTH?⟧` as an alternative to its working proposed-null reading.
 Source annotations and graphical signs remain visible. The embedded date fields
-`6_` and `8_` are preserved;
-unencrypted continuations are included separately and excluded from cipher counts.
+`6_` and `8_` are preserved; unencrypted continuations are included separately
+and excluded from cipher counts.
 
 ## Reproduce
 
 Python 3.9 or newer; no third-party dependencies. Run from the repository root:
 
 ```sh
-python3 decode_boswell.py --mode core
-python3 decode_boswell.py --mode working
 python3 decode_boswell.py --check
 python3 verify_independently.py
 python3 -m unittest -v test_decoder.py
-python3 concordance.py 755 188 539 639 228 291 873 --include-external
-python3 decode_boswell.py --audit generated
 ```
 
-The final command regenerates all three reading modes, an audit JSON file, and
-a CSV containing every numerical/graphical token. The two committed outputs
-match the generated `*_working_literal.txt` files. Use `--document Charles` or
-`--document Nicholas` to select a letter; `--hide-nulls` improves readability.
+`--check` verifies source hashes, the readable input copies, all 27 passage
+examples, and both complete committed outputs. A missing or stale output makes
+it fail. To regenerate after reviewing a key change:
+
+```sh
+python3 decode_boswell.py --write-outputs
+python3 decode_boswell.py --audit generated
+python3 decode_boswell.py --check
+```
+
+`--write-outputs` refreshes the two files in `output/`. `--audit` writes all three
+reading modes, an audit JSON file, and a token CSV to the ignored `generated/`
+directory. Both commands use the same document renderer. Every decoder command
+checks the source hashes and readable input copies before proceeding.
+
+To inspect readings or locate a code:
+
+```sh
+python3 decode_boswell.py --document Charles --mode core
+python3 decode_boswell.py --document Charles --mode exploratory --hide-nulls
+python3 concordance.py 303 376 591 854 873 --include-external
+```
+
+The default display uses the working key and both documents. `--document`,
+`--mode`, and `--hide-nulls` customize display; generation and checks always
+cover both documents and preserve the full output notation.
 
 Decoding does not load proposed plaintext. The 27 passage checks deliberately
 compare against disclosed proposed readings, covering 147 distinct numerical

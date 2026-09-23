@@ -124,6 +124,50 @@ def compact(text: str,mode: str='working') -> str:
     return re.sub(r'\s+','',s).upper()
 
 
+def validate_sources() -> None:
+    """Check the preserved extract hashes and their readable text copies."""
+    for name,doc in SOURCES['documents'].items():
+        text=doc['cipher_bearing_extract']
+        if hashlib.sha256(text.encode('utf-8')).hexdigest()!=doc['extract_sha256']:
+            raise ValueError(f'Source checksum failed: {name}')
+        expected=text+'\n'+doc['plaintext_continuation']+'\n'
+        path=ROOT/'input'/f'{name.lower()}.txt'
+        if path.read_bytes()!=expected.encode('utf-8'):
+            raise ValueError(f'Readable input differs from sources.json: {path.name}')
+
+
+def document_output(doc: dict[str,Any], mode: str='working') -> str:
+    """Render the same full document for audit and committed output files."""
+    return (
+        f'MODE: {mode}. Partial model; not a repaired or fully verified plaintext.\n'
+        'Uppercase letters are model outputs; interspersed source prose is unchanged.\n'
+        '⟨∅:n⟩ = proposed null; {WORD} = working code; ⟦n⟧ = unresolved; ⟦n:guess?⟧ = tentative.\n'
+        'Original suffixes and graphics are preserved. All source date fields are retained.\n\n'
+        +decode(doc['cipher_bearing_extract'],mode)
+        +'\n\nUNCHANGED PLAINTEXT CONTINUATION:\n'+doc['plaintext_continuation']+'\n'
+    )
+
+
+def check_outputs() -> list[dict[str,Any]]:
+    """Compare complete committed outputs with freshly decoded working text."""
+    results=[]
+    for name,doc in SOURCES['documents'].items():
+        path=ROOT/'output'/f'{name.lower()}.txt'
+        matches=path.is_file() and path.read_bytes()==document_output(doc).encode('utf-8')
+        results.append({'document':name,'passed':matches})
+    return results
+
+
+def write_outputs() -> None:
+    """Refresh the two committed working outputs after validating both inputs."""
+    validate_sources()
+    outputs={name:document_output(doc) for name,doc in SOURCES['documents'].items()}
+    destination=ROOT/'output'
+    destination.mkdir(parents=True,exist_ok=True)
+    for name,text in outputs.items():
+        (destination/f'{name.lower()}.txt').write_bytes(text.encode('utf-8'))
+
+
 def check_proofs() -> list[dict[str,Any]]:
     proofs=json.loads((ROOT/'proof_passages.json').read_text(encoding='utf-8'))
     results=[]
@@ -142,25 +186,20 @@ def check_proofs() -> list[dict[str,Any]]:
 
 
 def create_audit(destination: Path) -> dict[str,Any]:
+    validate_sources()
     destination.mkdir(parents=True,exist_ok=True)
     all_records=[]
     docs={}
     for name,doc in SOURCES['documents'].items():
         text=doc['cipher_bearing_extract']
-        if hashlib.sha256(text.encode()).hexdigest()!=doc['extract_sha256']:
-            raise ValueError(f'Source checksum failed: {name}')
         records=audit_text(text,name,'working')
         all_records.extend(records)
         docs[name]={'numeric_occurrences':sum(r['number'] is not None for r in records),
                     'graphics':sum(r['number'] is None for r in records),
                     'categories':dict(Counter(r['category'] for r in records))}
         for mode in MODES:
-            (destination/f'{name.lower()}_{mode}_literal.txt').write_text(
-                f'MODE: {mode}. Partial model; not a repaired or fully verified plaintext.\n'
-                'Uppercase letters are model outputs; interspersed source prose is unchanged.\n'
-                '⟨∅:n⟩ = proposed null; {WORD} = working code; ⟦n⟧ = unresolved; ⟦n:guess?⟧ = tentative.\n'
-                'Original suffixes and graphics are preserved. All source date fields are retained.\n\n'
-                +decode(text,mode)+'\n\nUNCHANGED PLAINTEXT CONTINUATION:\n'+doc['plaintext_continuation']+'\n',encoding='utf-8')
+            (destination/f'{name.lower()}_{mode}_literal.txt').write_bytes(
+                document_output(doc,mode).encode('utf-8'))
     core_values={r['number'] for r in all_records if r['category']=='periodic_letter'}
     proof_results=check_proofs()
     covered={}
@@ -197,18 +236,37 @@ def main() -> int:
     parser.add_argument('--document',choices=['Charles','Nicholas','both'],default='both')
     parser.add_argument('--mode',choices=MODES,default='working')
     parser.add_argument('--hide-nulls',action='store_true',help='Omit model nulls for readability; no letter corrections are applied.')
-    parser.add_argument('--audit',type=Path,help='Generate literal readings, token audit and passage checks in this directory.')
-    parser.add_argument('--check',action='store_true',help='Check disclosed passage examples. This is not independent historical authentication.')
+    actions=parser.add_mutually_exclusive_group()
+    actions.add_argument('--audit',type=Path,help='Generate all reading modes, token audit and passage checks in this directory.')
+    actions.add_argument('--check',action='store_true',help='Check source integrity, disclosed passages and both committed working outputs.')
+    actions.add_argument('--write-outputs',action='store_true',help='Refresh both files in output/ using the working key.')
     args=parser.parse_args()
+    if (args.audit or args.check or args.write_outputs) and (
+            args.document!='both' or args.mode!='working' or args.hide_nulls):
+        parser.error('--document, --mode and --hide-nulls customize display only; omit them for file generation or checks.')
+    try:
+        validate_sources()
+    except (OSError,ValueError) as error:
+        parser.exit(1,f'Source validation failed: {error}\n')
     if args.audit:
         result=create_audit(args.audit)
         print(json.dumps(result['combined'],indent=2,ensure_ascii=False))
         return 0 if result['combined']['proofs_passed']==result['combined']['proof_passages'] else 1
     if args.check:
         results=check_proofs()
+        print('PASS source hashes and readable input copies')
         for p in results:
             print(p['id'], 'PASS' if p['passed'] else 'FAIL',p['actual'])
-        return 0 if all(p['passed'] for p in results) else 1
+        outputs=check_outputs()
+        for item in outputs:
+            print('PASS' if item['passed'] else 'FAIL',item['document'],'committed working output')
+        if not all(item['passed'] for item in outputs):
+            print('Review the key changes, then run --write-outputs to refresh output/.')
+        return 0 if all(p['passed'] for p in results+outputs) else 1
+    if args.write_outputs:
+        write_outputs()
+        print('Refreshed both working outputs in output/.')
+        return 0
     for name,doc in SOURCES['documents'].items():
         if args.document not in (name,'both'): continue
         print(f'\n{name} — {args.mode} model, not a fully solved letter\n')
