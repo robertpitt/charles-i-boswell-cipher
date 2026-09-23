@@ -1,0 +1,74 @@
+{
+  "reviewed": "2026-09-23",
+  "status": "Research leads and catalogue identifications, not a recovered historical key or authenticated plaintext.",
+  "research_source": {
+    "author": "Daniel Bourdeau",
+    "title": "Charles I and Nicholas to Boswell (1643)",
+    "url": "https://dbourdeau.github.io/cyphersolver/boswell.html",
+    "published": "2026-09-15",
+    "updated": "2026-09-16",
+    "license_statement": "CC BY 4.0 (page footer)",
+    "retrieved_html_sha256": "37c47eef14cfb48854d29fc43a3c781792a3e45b2ee4dfde2a9357109475c956",
+    "use": "Graphic-sign and word-code candidates checked against the unchanged local transcription. This research builds on our existing alphabet and is not an independent historical key."
+  },
+  "target_manuscripts": [
+    {
+      "document": "Charles",
+      "reference": "SP 84/157/96",
+      "description": "Folio 217: Charles I to Boswell - in cipher.",
+      "date": "1643 Nov 2",
+      "record_id": "C7305802",
+      "url": "https://discovery.nationalarchives.gov.uk/details/r/C7305802",
+      "api_url": "https://discovery.nationalarchives.gov.uk/API/records/v1/details/C7305802",
+      "digitised": false,
+      "api_response_sha256": "5b1447a30cf31058f2aa4aa8a40354171a7dbdfc03bb47162f3179a8480523bc",
+      "images_examined": false
+    },
+    {
+      "document": "Nicholas",
+      "reference": "SP 84/157/97",
+      "description": "Folio 219: Nicholas to Boswell - in cipher.",
+      "date": "1643 Nov 2",
+      "record_id": "C7305803",
+      "url": "https://discovery.nationalarchives.gov.uk/details/r/C7305803",
+      "api_url": "https://discovery.nationalarchives.gov.uk/API/records/v1/details/C7305803",
+      "digitised": false,
+      "api_response_sha256": "40d47ae0e3d2a3d0c083eda7dd30be41d614b5340bc9cedc3309545047ecee40",
+      "images_examined": false
+    }
+  ],
+  "key_leads": [
+    {
+      "reference": "British Library, Egerton MS 2550, ff. 3–4",
+      "record_id": 3054,
+      "url": "https://de-crypt.org/decrypt-web/RecordsView/3054?showdetail=",
+      "catalogued_author": "Sir Edward Nicholas, Secretary of State",
+      "catalogued_receiver": "Charles I, King of England",
+      "catalogued_date_range": "1646–1658",
+      "access": "Authentication required; images not examined. Catalogue lead only, no matching key claimed."
+    }
+  ],
+  "nearby_correspondence": [
+    {
+      "id": "C7305804",
+      "citableReference": "SP 84/157/98",
+      "coveringDates": "1643 Nov 2/12",
+      "description": "Folio 221: Boswell to [Roe].",
+      "url": "https://discovery.nationalarchives.gov.uk/details/r/C7305804"
+    },
+    {
+      "id": "C7305805",
+      "citableReference": "SP 84/157/99",
+      "coveringDates": "1643 Nov 2/12",
+      "description": "Folio 223: Boswell to Nicholas.",
+      "url": "https://discovery.nationalarchives.gov.uk/details/r/C7305805"
+    },
+    {
+      "id": "C7305812",
+      "citableReference": "SP 84/157/106",
+      "coveringDates": "1643 Dec 25/1644 Jan 4",
+      "description": "Folio 237: Boswell to Nicholas.",
+      "url": "https://discovery.nationalarchives.gov.uk/details/r/C7305812"
+    }
+  ]
+}

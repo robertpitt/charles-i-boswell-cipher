@@ -1,22 +1,23 @@
 MODE: working. Partial model; not a repaired or fully verified plaintext.
 Uppercase letters are model outputs; interspersed source prose is unchanged.
 ⟨∅:n⟩ = proposed null; {WORD} = working code; ⟦n⟧ = unresolved; ⟦n:guess?⟧ = tentative.
+{sign:WORD} = working graphic; ⟦sign:WORD;role?⟧ = possible inline gloss, role unresolved.
 Original suffixes and graphics are preserved. All source date fields are retained.
 
-Sir, ⟦484⟧ C O M ⟦127⟧ ⟦131⟧ ⟦128⟧ ⟦142⟧ {TO}
+Sir, ⟦484⟧ C O M A N D S {TO}
 S I G n I A Y ⟨∅:2⟩ H I S pleasure {TO}
 ⟦873⟧r T H at Y O U ⟨∅:6⟩ U S E all
-P ⟦0⟧ S S I B L[b?] E[y?] diligence & industry
+P O S S I B L[b?] E[y?] diligence & industry
 B[-?] Y[of?] y^w[your?] M E A N E S {OF} the ⟦170⟧ &
 other W I S E ⟦746⟧ L Y {TO} H I
 N D E R the C O M G O U E R
 {OF} y^w ⟦181⟧ S ⟨∅:15⟩ from y^w ⟦726⟧ F O R ⟨∅:18⟩
 it I S H E R E ⟨∅:12⟩ A P P R
-E H E N D E D that T he ⟦126⟧
+E H E N D E D that T he Y
 ⟨∅:374⟩ ⟦854⟧ D O more H U R T ⟨∅:14⟩ P
 he N ⟨∅:2⟩ G O O D for that T ⟨∅:14⟩ ⟨∅:17⟩ he
 Y ⟦190⟧ understood H E R E ⟨∅:11⟩ N O T
-{TO} ⟦145⟧ F F E N* T ⟨∅:377⟩ M O ⟦131⟧
+{TO} ⟦145⟧ F F E N* T ⟨∅:377⟩ M O N
 A R C Y
 His Ma^ys two letters herewith sent with
 flying Seales are put into yo^r character, because

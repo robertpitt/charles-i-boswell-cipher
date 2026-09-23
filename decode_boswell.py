@@ -62,6 +62,8 @@ def value_for(n: int, mode: str='working') -> tuple[str,str,str]:
 
 
 def audit_text(text: str, document: str='', mode: str='working') -> list[dict[str,Any]]:
+    if mode not in MODES:
+        raise ValueError(f'Unknown mode: {mode}')
     result=[]
     for occurrence,m in enumerate(PATTERN.finditer(text),1):
         raw=m.group()
@@ -79,6 +81,18 @@ def audit_text(text: str, document: str='', mode: str='working') -> list[dict[st
         else:
             n=None
             out,category,basis=raw,'unresolved_graphic',KEY['graphics']
+            if mode != 'core' and raw in KEY['working_graphic_codes']:
+                entry=KEY['working_graphic_codes'][raw]
+                out=entry['output'].upper()
+                category,basis='working_graphic_code',entry['evidence']
+                for gloss in KEY['inline_graphic_glosses']:
+                    if gloss['symbol'] != raw:
+                        continue
+                    start=m.start()-gloss['source'].index(raw)
+                    if start>=0 and text[start:start+len(gloss['source'])]==gloss['source']:
+                        category='unresolved_graphic_role'
+                        basis+=' Possible inline gloss; word value proposed, textual role unresolved.'
+                        break
         result.append({
             'document':document,'occurrence':occurrence,'source_start':m.start(),
             'source_end':m.end(),'source_line':text.count('\n',0,m.start())+1,
@@ -99,6 +113,10 @@ def render_value(record: dict[str,Any],hide_nulls: bool=False) -> str:
         return f'⟦{record["raw"]}:{record["output"]}?⟧'
     if category=='working_word_code':
         return '{'+record['output']+'}'
+    if category=='working_graphic_code':
+        return '{'+record['raw']+':'+record['output']+'}'
+    if category=='unresolved_graphic_role':
+        return f'⟦{record["raw"]}:{record["output"]};role?⟧'
     return record['output']
 
 
@@ -142,6 +160,7 @@ def document_output(doc: dict[str,Any], mode: str='working') -> str:
         f'MODE: {mode}. Partial model; not a repaired or fully verified plaintext.\n'
         'Uppercase letters are model outputs; interspersed source prose is unchanged.\n'
         '⟨∅:n⟩ = proposed null; {WORD} = working code; ⟦n⟧ = unresolved; ⟦n:guess?⟧ = tentative.\n'
+        '{sign:WORD} = working graphic; ⟦sign:WORD;role?⟧ = possible inline gloss, role unresolved.\n'
         'Original suffixes and graphics are preserved. All source date fields are retained.\n\n'
         +decode(doc['cipher_bearing_extract'],mode)
         +'\n\nUNCHANGED PLAINTEXT CONTINUATION:\n'+doc['plaintext_continuation']+'\n'

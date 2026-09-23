@@ -1,5 +1,5 @@
 {
-  "version": "2026-09-14 partial-breakthrough v3",
+  "version": "2026-09-23 partial-breakthrough v4",
   "claim": "Recovered systematic main alphabet with proposed additional letters, nulls and a few word codes. Not a complete authenticated decipherment.",
   "core": {
     "minimum": 20,
@@ -10,10 +10,16 @@
     "note": "The row is odd-indexed alphabet positions followed by even-indexed positions (one-based). Formula predicts all 96 entries; only 80 are represented in the published extract. Individual anomalous occurrences remain."
   },
   "additional_letters": {
+    "0": {
+      "output": "o",
+      "evidence_class": "single-context; symbol identity uncertain",
+      "evidence": "P 0 S S I B L[b?] E[y?] gives POSSIBL[b?]E[y?]. Adopt O as the reading, without deciding whether the source zero is a cipher homophone or a transcribed plaintext O. The qualifiers remain.",
+      "reviewed": "2026-09-23"
+    },
     "116": {
       "output": "a",
       "evidence_class": "single-context",
-      "evidence": "MAS[box]TER; the box remains unresolved."
+      "evidence": "MAS[box]TER; the box has a working MASTER value but unresolved inline role."
     },
     "117": {
       "output": "d",
@@ -53,12 +59,36 @@
     "125": {
       "output": "t",
       "evidence_class": "single-context",
-      "evidence": "T + cleartext he + tentative 126=Y."
+      "evidence": "T + cleartext he + working 126=Y gives THEY."
+    },
+    "126": {
+      "output": "y",
+      "evidence_class": "cross-document inference",
+      "evidence": "125 he 126 gives THEY in Nicholas. Charles ends AC [591] & ESY; OUR for 591 would give A COUR&ESY, a courtesy candidate requiring a separate unverified & to T correction. Only the Nicholas word is clean.",
+      "reviewed": "2026-09-23"
+    },
+    "127": {
+      "output": "a",
+      "evidence_class": "single-context inference",
+      "evidence": "21 86 85 127 131 128 142 gives COMANDS in the Nicholas opening. The initial COM is from the fixed alphabet; A/N/D/S are jointly inferred, not four independent confirmations.",
+      "reviewed": "2026-09-23"
+    },
+    "128": {
+      "output": "d",
+      "evidence_class": "single-context inference",
+      "evidence": "The COMANDS candidate in Nicholas; inferred jointly with 127=A, 131=N and 142=S.",
+      "reviewed": "2026-09-23"
     },
     "129": {
       "output": "e",
       "evidence_class": "cross-context",
       "evidence": "APPREHENDED and HERE in Nicholas."
+    },
+    "131": {
+      "output": "n",
+      "evidence_class": "cross-context inference",
+      "evidence": "COMANDS and MONARCY in Nicholas. The latter is retained literally; no H is inserted to make MONARCHY.",
+      "reviewed": "2026-09-23"
     },
     "132": {
       "output": "o",
@@ -85,6 +115,13 @@
       "evidence_class": "single-context",
       "evidence": "F O R immediately before cleartext it."
     },
+    "142": {
+      "output": "s",
+      "evidence_class": "single-context inference",
+      "evidence": "COMANDS in the Nicholas opening. Suggested by Daniel Bourdeau, reviewed against the unchanged tokens. Consistent with preceding supplemental 141=R but not proved by alphabetic order. The preceding 484 remains unresolved.",
+      "reviewed": "2026-09-23",
+      "source_url": "https://dbourdeau.github.io/cyphersolver/boswell.html"
+    },
     "146": {
       "output": "e",
       "evidence_class": "single-context",
@@ -108,7 +145,7 @@
     "150": {
       "output": "s",
       "evidence_class": "cross-document",
-      "evidence": "IS in Nicholas; SAME in Charles. Also U[+]S, with the graphic unresolved."
+      "evidence": "IS in Nicholas; SAME in Charles. Also U[＋]S, with the inline graphic role unresolved."
     },
     "151": {
       "output": "u",
@@ -125,6 +162,12 @@
       "evidence_class": "cross-context",
       "evidence": "WE made... and FREE."
     },
+    "158": {
+      "output": "u",
+      "evidence_class": "single-context inference",
+      "evidence": "158 ＋ 150 gives U ＋ S after INUITING. U agrees with the proposed US value of the intervening sign, whose role as an inline gloss remains unresolved.",
+      "reviewed": "2026-09-23"
+    },
     "159": {
       "output": "y",
       "evidence_class": "single-context",
@@ -132,33 +175,9 @@
     }
   },
   "tentative_letters": {
-    "0": {
-      "output": "o",
-      "evidence": "The single zero in P0SSIBLE may be a plaintext O or a cipher homophone, not a null."
-    },
-    "126": {
-      "output": "y",
-      "evidence": "Gives THEY in Nicholas; the other occurrence in Charles remains in an anomalous ESY sequence."
-    },
-    "127": {
-      "output": "a",
-      "evidence": "Opening COMAND[142] in Nicholas; the exact ending is unresolved."
-    },
-    "128": {
-      "output": "d",
-      "evidence": "Opening COMAND[142] in Nicholas; the exact ending is unresolved."
-    },
-    "131": {
-      "output": "n",
-      "evidence": "MONARCY in Nicholas and COMAND[142]. MONARCY lacks an H compared with the modern spelling."
-    },
     "145": {
       "output": "a",
-      "evidence": "Produces AFFENT, not AFFECT. Interpreting this as AFFECT requires a local correction to the already-flagged 98*."
-    },
-    "158": {
-      "output": "u",
-      "evidence": "Produces U[+]S, but the graphical symbol is unresolved."
+      "evidence": "Produces AFFEN*T, not AFFECT. Interpreting this as AFFECT requires a local correction to the already-flagged 98*."
     }
   },
   "proposed_nulls": [
@@ -189,6 +208,24 @@
   ],
   "null_caveat": "These are proposed nulls, not a recovered physical key. 376 has a competing BOTH hypothesis, displayed only in exploratory mode. 6_ and 8_ in the date are excluded from null treatment. Unobserved members of 1–19 or 360–389 are NOT asserted as solved. Graphic signs are NOT discarded.",
   "working_word_codes": {
+    "223": {
+      "output": "by",
+      "evidence_class": "single-context inference",
+      "evidence": "Cleartext there + 223 + high L Y O B L I G E D constrains THEREBY. Adopt BY; the adjacent 591/749 phrase is still exploratory.",
+      "reviewed": "2026-09-23"
+    },
+    "291": {
+      "output": "duke",
+      "evidence_class": "external-ciphertext-context",
+      "evidence": "Two occurrences in Charles (DUKE OF CURLand; late [303] DUKE S), plus a separately published letter of 2 November 1643 to Duke James. Its numerical line 291, 588, 45, 135, 52, 25, 20, 50, 81 gives [291] OF CURLAND with the v1 key. The printed addressee supports DUKE. See input/external_evidence.json and FINDINGS.md. Working inference, not a recovered historical key.",
+      "source_url": "https://archive.org/details/miscellanyofscot01scot/page/149/mode/1up"
+    },
+    "516": {
+      "output": "letter",
+      "evidence_class": "cross-context inference",
+      "evidence": "Twice in Charles: after received [873] CIUillNWALCOM and before OF the date; again after never heard of any [514] and before OF Our... . LETTER is the selected singular reading in both contexts; the damaged opening is not repaired.",
+      "reviewed": "2026-09-23"
+    },
     "588": {
       "output": "of",
       "evidence_class": "cross-document",
@@ -203,12 +240,6 @@
       "output": "un",
       "evidence_class": "single-context",
       "evidence": "UN + D E R + cleartext stand gives UNDERSTAND."
-    },
-    "291": {
-      "output": "duke",
-      "evidence_class": "external-ciphertext-context",
-      "evidence": "Two occurrences in Charles (DUKE OF CURLand; late [303] DUKE S), plus a separately published letter of 2 November 1643 to Duke James. Its numerical line 291, 588, 45, 135, 52, 25, 20, 50, 81 gives [291] OF CURLAND with the v1 key. The printed addressee supports DUKE. See input/external_evidence.json and FINDINGS.md. Working inference, not a recovered historical key.",
-      "source_url": "https://archive.org/details/miscellanyofscot01scot/page/149/mode/1up"
     }
   },
   "word_code_hypotheses": {
@@ -222,7 +253,11 @@
     },
     "181": {
       "output": "anabaptist",
-      "evidence": "Single occurrence with plural S after coming-over-like text. This is only a conjecture; the group is NOT identified."
+      "evidence": "Single occurrence with plural S after coming-over-like text. This is only a conjecture; the group is NOT identified. AMBASSADOR is a new history-led alternative from Bourdeau; the diplomatic episode does not identify the cipher value.",
+      "alternatives": [
+        "ambassador"
+      ],
+      "source_url": "https://dbourdeau.github.io/cyphersolver/boswell.html"
     },
     "185": {
       "output": "assistance",
@@ -241,16 +276,13 @@
       "evidence": "THEY [190] understood HERE NOT..."
     },
     "205": {
-      "output": "",
-      "evidence": "Unresolved, before OUR said..."
+      "output": "assure",
+      "evidence": "ASSURE fits TO [205] OUR said [COUSIN] [873] [MASTER] & to lett him UNDERSTAND. Single occurrence; no independent constraint establishes it.",
+      "reviewed": "2026-09-23"
     },
     "213": {
       "output": "",
       "evidence": "Unresolved, after cleartext addres by. Could identify an intermediary."
-    },
-    "223": {
-      "output": "by",
-      "evidence": "Cleartext there + [223] + HIGHLY OBLIGED suggests THEREBY."
     },
     "228": {
       "output": "Bristol",
@@ -271,20 +303,26 @@
       "evidence": "User-supplied candidate reviewed 14 September 2026. The sole occurrence follows the father-and-uncle phrase and precedes cleartext deceased of happy memory. BOTH fits the pair, but omitting the code under the existing proposed-null model also permits the phrase. Exploratory mode displays BOTH as a competing hypothesis; working mode retains the proposed null. Neither 303 nor 376 independently validates the other. See FINDINGS.md."
     },
     "406": {
-      "output": "bounte",
-      "evidence": "Possible prefix before cleartext ous. Not established."
+      "output": "gener",
+      "evidence": "GENER + ous fits the benevolence passage; BOUNTE and other stems remain possible. One occurrence.",
+      "reviewed": "2026-09-23",
+      "source_url": "https://dbourdeau.github.io/cyphersolver/boswell.html",
+      "alternatives": [
+        "bounte"
+      ]
     },
     "484": {
-      "output": "I am",
-      "evidence": "Formulaic inference for Nicholas opening; following COMAND[142] is not fully recovered."
+      "output": "His Majesty",
+      "evidence": "Replace the poorly fitting I AM candidate. HIS MAJESTY COMANDS TO SIGNIAY HIS pleasure fits the royal instruction better, but the verb remains SIGNIAY and an expected ME is absent. One occurrence; do not insert missing words.",
+      "reviewed": "2026-09-23",
+      "source_url": "https://dbourdeau.github.io/cyphersolver/boswell.html",
+      "alternatives": [
+        "I am"
+      ]
     },
     "514": {
       "output": "",
       "evidence": "Unresolved adjective/qualifier before probable LETTER."
-    },
-    "516": {
-      "output": "letter",
-      "evidence": "Two occurrences, but singular/plural value is not independently verified."
     },
     "539": {
       "output": "musket",
@@ -295,16 +333,20 @@
       "source_url": "https://www.st-andrews.ac.uk/history/ssne/item.php?id=1490"
     },
     "591": {
-      "output": "",
-      "evidence": "Unresolved. TION fits one location but not the other; it has deliberately NOT been adopted."
+      "output": "our",
+      "evidence": "Two occurrences: ACKNOWLEDGE [591] [749] THEREBY supports OUR with 749=SELVES. Elsewhere 20 69 591 & 70 88 126 then gives ACOUR&ESY. A COURTESY requires an unverified & to T reading. OUR is a useful joint hypothesis, not a clean cross-context solution.",
+      "reviewed": "2026-09-23",
+      "source_url": "https://dbourdeau.github.io/cyphersolver/boswell.html"
     },
     "629": {
       "output": "pray",
       "evidence": "Formulaic request before cleartext you therefore."
     },
     "636": {
-      "output": "",
-      "evidence": "Unresolved. Its attached por text is also uncertain."
+      "output": "pro",
+      "evidence": "PRO + source por gives PROpor, a possible beginning of proportion, but no tion is supplied. Do not append it. One occurrence.",
+      "reviewed": "2026-09-23",
+      "source_url": "https://dbourdeau.github.io/cyphersolver/boswell.html"
     },
     "639": {
       "output": "powder",
@@ -320,15 +362,26 @@
     },
     "726": {
       "output": "",
-      "evidence": "Unresolved origin after cleartext from y^w."
+      "evidence": "Unresolved origin after cleartext from y^w. STATES is a new candidate paired with 181=AMBASSADOR, not an independent confirmation.",
+      "alternatives": [
+        "States"
+      ],
+      "source_url": "https://dbourdeau.github.io/cyphersolver/boswell.html"
     },
     "746": {
-      "output": "",
-      "evidence": "Unresolved word or stem before LY; do not present secret/seasonable as deciphered."
+      "output": "secret",
+      "evidence": "SECRET + LY before TO HINDER is plausible; other adverbs fit. One occurrence.",
+      "reviewed": "2026-09-23",
+      "source_url": "https://dbourdeau.github.io/cyphersolver/boswell.html"
     },
     "749": {
-      "output": "self",
-      "evidence": "Possible formula acknowledge [591] [749] thereby; depends on unresolved 591."
+      "output": "selves",
+      "evidence": "ACKNOWLEDGE [591] [749] THEREBY HIGHLY OBLIGED supports OUR SELVES with 591=OUR. Changed from SELF to SELVES; both values are jointly inferred from one phrase.",
+      "reviewed": "2026-09-23",
+      "source_url": "https://dbourdeau.github.io/cyphersolver/boswell.html",
+      "alternatives": [
+        "self"
+      ]
     },
     "750": {
       "output": "send",
@@ -345,7 +398,11 @@
     },
     "851": {
       "output": "which",
-      "evidence": "TO [851] WE made an... suggests WHICH."
+      "evidence": "TO [851] WE made anSWCR can refer back to the funeral invitations (WHICH) or to a person (WHOM). Both remain possible; SWCR is unchanged.",
+      "reviewed": "2026-09-23",
+      "alternatives": [
+        "whom"
+      ]
     },
     "854": {
       "output": "will",
@@ -353,15 +410,72 @@
     },
     "873": {
       "output": "you",
-      "evidence": "Unadorned YOU/YOU+r plausible; repeated graphic-enclosed occurrences are NOT explained by this assignment."
+      "evidence": "Six occurrences: five bare Charles forms favour YOUR, one Nicholas 873r permits YOU+r. A single literal value does not recover YOUR in all six. Preserve suffixes; no automatic YOUR/YOU switch.",
+      "reviewed": "2026-09-23",
+      "alternatives": [
+        "your"
+      ]
     }
   },
-  "graphics": "Unresolved: △, 中, □, +, ＋. Modifiers may matter. No graphical sign is assigned a null or word value.",
-  "unknown_numeric_codes": [
-    142
-  ],
+  "graphics": "Proposed values GOOD, COUSIN, MASTER and US follow Bourdeau, checked against all 15 source occurrences. Eleven standalone uses are working readings. Four exact inline contexts may be glosses; their role remains unresolved and the signs are never silently deleted. Original manuscript layout has not been examined.",
+  "unknown_numeric_codes": [],
   "dates": [
     "6_",
     "8_"
+  ],
+  "working_graphic_codes": {
+    "△": {
+      "output": "good",
+      "evidence": "Embedded in GO△OD at its first use, then before COUSIN at the closing. Two occurrences; the first may be an inline gloss rather than additive text.",
+      "evidence_class": "contextual word-sign inference",
+      "source_url": "https://dbourdeau.github.io/cyphersolver/boswell.html",
+      "reviewed": "2026-09-23"
+    },
+    "中": {
+      "output": "cousin",
+      "evidence": "Four occurrences: first in CO中USm.y^w, then in three repeated references to the Duke alongside 873 and MASTER. COUSIN is contextual; the first spelling is damaged.",
+      "evidence_class": "contextual word-sign inference",
+      "source_url": "https://dbourdeau.github.io/cyphersolver/boswell.html",
+      "reviewed": "2026-09-23"
+    },
+    "□": {
+      "output": "master",
+      "evidence": "Embedded in MAS□TER at its first use, followed by three standalone references alongside COUSIN and 873.",
+      "evidence_class": "contextual word-sign inference",
+      "source_url": "https://dbourdeau.github.io/cyphersolver/boswell.html",
+      "reviewed": "2026-09-23"
+    },
+    "+": {
+      "output": "us",
+      "evidence": "Four standalone positions: PREIUDICED +; ACCEPTABLE TO +; TRANSMIT ... TO +; addres ... TO +. All admit US.",
+      "evidence_class": "contextual word-sign inference",
+      "source_url": "https://dbourdeau.github.io/cyphersolver/boswell.html",
+      "reviewed": "2026-09-23"
+    },
+    "＋": {
+      "output": "us",
+      "evidence": "Full-width form inside 158 ＋ 150 = U ＋ S. Related to + by a working typographic-equivalence hypothesis; its inline role is unresolved.",
+      "evidence_class": "contextual word-sign inference",
+      "source_url": "https://dbourdeau.github.io/cyphersolver/boswell.html",
+      "reviewed": "2026-09-23"
+    }
+  },
+  "inline_graphic_glosses": [
+    {
+      "symbol": "△",
+      "source": "47 86 △ 110 33"
+    },
+    {
+      "symbol": "中",
+      "source": "93 122 中 41 112 m.y^w"
+    },
+    {
+      "symbol": "□",
+      "source": "61 116 88 □ 77 70 28"
+    },
+    {
+      "symbol": "＋",
+      "source": "158 ＋ 150"
+    }
   ]
 }

@@ -295,5 +295,60 @@
     "literal_compact_expected": "CURLAND",
     "note": "CURL uses the unchanged periodic block; AND was already cleartext. Compare the fully numerical CURLAND suffix in input/external_evidence.json.",
     "warning": "Expected text is a proposed reading for a reproducibility test, not an external answer key."
+  },
+  {
+    "id": "P28",
+    "document": "Nicholas",
+    "source_start": 9,
+    "source_end": 33,
+    "source": "21 86 85 127 131 128 142",
+    "mode": "working",
+    "literal_compact_expected": "COMANDS",
+    "note": "Supplemental A/N/D/S jointly inferred from this word; COM is periodic. Reproducibility of the working inference, not independent authentication.",
+    "warning": "Expected text is a proposed reading for a reproducibility test, not an external answer key."
+  },
+  {
+    "id": "P29",
+    "document": "Nicholas",
+    "source_start": 436,
+    "source_end": 446,
+    "source": "125 he 126",
+    "mode": "working",
+    "literal_compact_expected": "THEY",
+    "note": "Additional T and newly adopted Y with source he unchanged.",
+    "warning": "Expected text is a proposed reading for a reproducibility test, not an external answer key."
+  },
+  {
+    "id": "P30",
+    "document": "Nicholas",
+    "source_start": 601,
+    "source_end": 625,
+    "source": "109 122 131\n44 100 69 79",
+    "mode": "working",
+    "literal_compact_expected": "MONARCY",
+    "note": "Additional O/N; retain MONARCY without inserting H.",
+    "warning": "Expected text is a proposed reading for a reproducibility test, not an external answer key."
+  },
+  {
+    "id": "P31",
+    "document": "Nicholas",
+    "source_start": 121,
+    "source_end": 152,
+    "source": "27 0 88 112 72 56 49[b?] 70[y?]",
+    "mode": "working",
+    "literal_compact_expected": "POSSIBL[B?]E[Y?]",
+    "note": "0 is read O; whether it is a cipher sign or plaintext O is unresolved. Both source qualifiers retained.",
+    "warning": "Expected text is a proposed reading for a reproducibility test, not an external answer key."
+  },
+  {
+    "id": "P32",
+    "document": "Charles",
+    "source_start": 843,
+    "source_end": 886,
+    "source": "there 223 high 25 79 4 62 80 49 48 71 70 81",
+    "mode": "working",
+    "literal_compact_expected": "THEREBYHIGHLYOBLIGED",
+    "note": "New working BY; proposed null 4 omitted. No dependence on nearby 591/749.",
+    "warning": "Expected text is a proposed reading for a reproducibility test, not an external answer key."
   }
 ]

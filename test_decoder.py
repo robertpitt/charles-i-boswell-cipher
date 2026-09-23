@@ -25,16 +25,18 @@ class DecoderTests(unittest.TestCase):
     def test_original_dates_retained(self):
         self.assertEqual(d.decode('6_ 8_ 1643'), '6_ 8_ 1643')
     def test_zero_not_silently_null(self):
-        self.assertEqual(d.decode('0'),'⟦0⟧')
+        self.assertEqual(d.decode('0'),'O')
+        self.assertEqual(d.decode('0',mode='core'),'⟦0⟧')
     def test_nulls_are_visible_by_default(self):
         self.assertEqual(d.decode('4 362'),'⟨∅:4⟩ ⟨∅:362⟩')
     def test_graphics_never_discarded(self):
         text='△ 中 □ + ＋'
-        self.assertEqual(d.decode(text),text)
+        self.assertEqual(d.decode(text,mode='core'),text)
+        self.assertEqual(d.decode(text),'{△:GOOD} {中:COUSIN} {□:MASTER} {+:US} {＋:US}')
     def test_qualifiers_are_preserved(self):
         self.assertEqual(d.decode('49[b?] 70[y?] 90^'),'L[b?] E[y?] X^')
-    def test_unresolved_your_and_ending_kept(self):
-        self.assertEqual(d.decode('873r 142'),'⟦873⟧r ⟦142⟧')
+    def test_unresolved_your_and_new_ending_kept(self):
+        self.assertEqual(d.decode('873r 142'),'⟦873⟧r S')
     def test_exploratory_values_are_marked(self):
         self.assertEqual(d.decode('873r',mode='exploratory'),'⟦873:YOU?⟧r')
     def test_funeral_hypotheses_stay_exploratory(self):
@@ -52,6 +54,23 @@ class DecoderTests(unittest.TestCase):
     def test_known_anomaly_is_not_repaired(self):
         self.assertEqual(d.compact('27 he 50'),'PHEN')
         self.assertEqual(d.compact('40 24 23 n 48 44 31 2'),'SIGNIAY')
+        self.assertEqual(d.compact('20 69 591 & 70 88 126',mode='exploratory'),
+                         'AC⟦591:OUR?⟧&ESY')
+        self.assertEqual(d.compact('854e 45 62 120 ly',mode='exploratory'),
+                         '⟦854:WILL?⟧ECOMLY')
+    def test_graphic_gloss_roles_remain_unresolved(self):
+        text=d.SOURCES['documents']['Charles']['cipher_bearing_extract']
+        records=[r for r in d.audit_text(text) if r['number'] is None]
+        self.assertEqual(len(records),15)
+        self.assertEqual(sum(r['category']=='working_graphic_code' for r in records),11)
+        self.assertEqual(sum(r['category']=='unresolved_graphic_role' for r in records),4)
+        for mode in ('working','exploratory'):
+            for gloss in d.KEY['inline_graphic_glosses']:
+                for hide in (True,False):
+                    result=d.decode(gloss['source'],mode=mode,hide_nulls=hide)
+                    self.assertIn(gloss['symbol'],result)
+                    self.assertIn(';role?⟧',result)
+        self.assertEqual(d.decode('47 86 △ 110 33'),'G O ⟦△:GOOD;role?⟧ O D')
     def test_word_code_count_is_not_missing_symbols(self):
         self.assertEqual(d.decode('588 800 835'),'{OF} {TO} {UN}')
     def test_no_modernising_u_v(self):

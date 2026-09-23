@@ -12,7 +12,7 @@ Several word codes, graphical signs, and anomalous passages remain unresolved.
 | Partial key, evidence, and separately labelled hypotheses | [partial_key.json](partial_key.json) |
 | Complete output of the working partial key | [Charles](output/charles.txt), [Nicholas](output/nicholas.txt) |
 | Decoder | [decode_boswell.py](decode_boswell.py) |
-| 27 passage checks with exact source offsets | [proof_passages.json](proof_passages.json) |
+| 32 passage checks with exact source offsets | [proof_passages.json](proof_passages.json) |
 | External cipher evidence and follow-up research | [FINDINGS.md](FINDINGS.md), [reference data](input/external_evidence.json) |
 
 ## The key
@@ -30,9 +30,11 @@ Each letter has four numerical equivalents, 24 apart: `20 = 44 = 68 = 92 = A`,
 for example. The rule predicts 96 entries; 80 distinct values occur in the
 inputs. It is not extended beyond 115.
 
-The **working** key adds 24 explicitly listed letter assignments, 24 proposed
-null values (numbers assumed to contribute no text), and four word, syllable,
-or title codes: `588 = OF`, `800 = TO`, `835 = UN`, and `291 = DUKE`.
+The **working** key adds 31 explicitly listed letter readings, 24 proposed
+null values (numbers assumed to contribute no text), and six word, syllable,
+or title codes: `223 = BY`, `291 = DUKE`, `516 = LETTER`, `588 = OF`,
+`800 = TO`, and `835 = UN`. Four graphic-sign values cover 11 standalone uses;
+four additional inline uses retain an unresolved-role marker.
 Each additional assignment has its evidence in the key file; some rely on a
 single context. Further guesses are confined to **exploratory** mode.
 
@@ -76,12 +78,13 @@ and 15 graphical occurrences**:
 | Category | Occurrences |
 | --- | ---: |
 | Main alphabet letters | 274 |
-| Additional letter assignments | 52 |
+| Additional letter readings | 61 |
 | Proposed nulls | 51 |
-| Working word/syllable codes | 24 |
+| Working word/syllable codes | 27 |
 | Date/annotation fields | 2 |
-| Unresolved numbers | 48 |
-| Unresolved graphical signs | 15 |
+| Unresolved numbers | 36 |
+| Working standalone graphical signs | 11 |
+| Graphics with unresolved inline roles | 4 |
 
 These counts measure mapping coverage, **not decipherment accuracy**. Anomalies
 such as `PHEN`, `SIGNIAY`, and `DAR&MOUTH` are retained. The group mentioned in
@@ -92,8 +95,11 @@ dated 2 November 1643, contains a numerical line that the original v1 key reads 
 assignment. See [follow-up findings](FINDINGS.md) for the source image, comparison,
 and unresolved weapons alternatives. This external reference is counted separately.
 `303 = TWO` and `376 = BOTH` are exploratory funeral-passage hypotheses.
-See the [remaining questions](FINDINGS.md#remaining-evidence) for the evidence
-needed to advance beyond this partial result.
+The 23 September update adds LETTER, BY, seven letter readings and the
+standalone signs GOOD, COUSIN, MASTER and US as working inferences. OUR/SELVES
+is a useful new lead, but the second OUR occurrence needs a transcription check.
+See the [remaining values](FINDINGS.md#complete-list-of-unresolved-numerical-values)
+and [identified manuscripts](FINDINGS.md#manuscripts-and-the-route-to-completion).
 
 ## Reading the output
 
@@ -101,7 +107,9 @@ Uppercase letters mark decoder outputs; interspersed source prose is unchanged.
 `⟦n⟧` marks an unresolved number, `⟨∅:n⟩` a proposed null, `{WORD}` a working
 code, and `⟦n:guess?⟧` an exploratory hypothesis. In exploratory mode, `376`
 displays `⟦376:BOTH?⟧` as an alternative to its working proposed-null reading.
-Source annotations and graphical signs remain visible. The embedded date fields
+`{sign:WORD}` marks a working graphic value; `⟦sign:WORD;role?⟧` marks a
+possible inline gloss whose role remains unresolved. Source annotations and
+graphical signs remain visible. The embedded date fields
 `6_` and `8_` are preserved; unencrypted continuations are included separately
 and excluded from cipher counts.
 
@@ -115,7 +123,7 @@ python3 verify_independently.py
 python3 -m unittest -v test_decoder.py
 ```
 
-`--check` verifies source hashes, the readable input copies, all 27 passage
+`--check` verifies source hashes, the readable input copies, all 32 passage
 examples, and both complete committed outputs. A missing or stale output makes
 it fail. To regenerate after reviewing a key change:
 
@@ -142,8 +150,8 @@ The default display uses the working key and both documents. `--document`,
 `--mode`, and `--hide-nulls` customize display; generation and checks always
 cover both documents and preserve the full output notation.
 
-Decoding does not load proposed plaintext. The 27 passage checks deliberately
-compare against disclosed proposed readings, covering 147 distinct numerical
+Decoding does not load proposed plaintext. The 32 passage checks deliberately
+compare against disclosed proposed readings, covering 172 distinct numerical
 positions, with overlaps between examples. The separate verifier checks those
 examples and the external numerical address without importing the decoder.
 The concordance locates exact numerical tokens without loading a key.
@@ -158,6 +166,12 @@ are documented in [FINDINGS.md](FINDINGS.md). Source: S. Tomokiyo,
 [“Charles I–Boswell Cipher (1643)”](https://cryptiana.blogspot.com/2021/09/charles-i-boswell-cipher-1643.html),
 Cryptiana Discussion Forum, 17 September 2021. The author describes the
 transcriptions as provisional and the recipient's identity as uncertain.
+
+The target manuscripts are now identified as **TNA SP 84/157/96–97**,
+folios 217 and 219, both catalogued as undigitised. Research provenance and
+source records are in [input/research_evidence.json](input/research_evidence.json).
+Daniel Bourdeau’s [follow-up research](https://dbourdeau.github.io/cyphersolver/boswell.html)
+supplied graphic-sign and further word-code leads, evaluated in the findings.
 
 This investigation has not examined the original target manuscripts, a matching
 historical key, or an authenticated plaintext of either target letter. Neither a

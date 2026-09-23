@@ -1,184 +1,224 @@
 # Findings and unresolved questions
 
-Reviewed **23 September 2026**. The historical evidence and candidate review
-below were assembled on 14 September; the cleanup review adds no deciphered
-values. **An external cipher specimen supports `291 = DUKE`.** `303 = TWO` and
-`376 = BOTH` remain exploratory. Supplied research notes and candidate tables
-are treated as hypotheses, not authenticated plaintext.
+Reviewed **23 September 2026**, key v4. **The decipherment is still partial.**
+This pass adds working readings at 12 numerical and 11 graphical occurrences.
+There remain **36 unresolved numerical occurrences** (27 Charles, 9 Nicholas)
+and **four graphics with unresolved textual roles**. These figures describe
+mapping coverage, not accuracy; 51 proposed-null occurrences and several damaged
+passages also need verification.
 
-## Funeral leads: TWO and BOTH
+## New working readings
 
-The supplied candidate table offers two useful leads in the same passage.
-Each occurs **once**, in Charles's letter; neither occurs in Nicholas's extract.
+| Assignment | Occurrences | Evidence and limitation |
+| --- | ---: | --- |
+| `516 = LETTER` | 2 | Both Charles contexts concern receipt of a letter: one precedes its date; the other follows “never heard of any”. Singular LETTER is the working reading. |
+| `223 = BY` | 1 | Source `there 223 high 25 79 …` yields THEREBY HIGHLY OBLIGED. |
+| `126 = Y` | 2 | Gives THEY in Nicholas. Charles gives the ending ESY in the courtesy candidate below; that occurrence still has a surrounding transcription problem. |
+| `127 = A`, `128 = D`, `131 = N`, `142 = S` | 5 | Together give COMANDS after unresolved `484`; `131` also gives MONARCY. These letters are jointly inferred, not five independent confirmations. |
+| `0 = O` | 1 | Gives POSSIBL[b?]E[y?]. Whether zero is a cipher sign or a transcribed plaintext O remains undecided. |
+| `158 = U` | 1 | Gives U ＋ S, consistent with the proposed US sign below. Its inline role is unresolved. |
 
-| Code | New candidate | Support and remaining uncertainty |
-| --- | --- | --- |
-| 303 | TWO | Precedes `291 40 = DUKE S`, followed by the father-and-uncle phrase. TWO fits the named pair, but there is no repeated use to distinguish it from another qualifier. |
-| 376 | BOTH | Follows that pair and precedes cleartext `deceased of happy memory`. BOTH fits, but the existing proposed-null interpretation also permits the phrase. |
+These are contextual **working inferences**, not entries recovered from a
+historical key. The literal output retains COMANDS, MONARCY and the source's
+annotations. It does not repair spelling to make the inferences look stronger.
 
-The unchanged source span is:
+### Graphic signs
+
+Daniel Bourdeau's follow-up, published 15 September and updated 16 September
+2026, proposes `△ = GOOD`, `中 = COUSIN`, `□ = MASTER`, and `+ / ＋ = US`.
+It builds on this repository's alphabet. We checked all 15 graphic occurrences
+against the preserved transcription before adopting the standalone readings.
+[Research and attribution](https://dbourdeau.github.io/cyphersolver/boswell.html).
+
+| Sign | First occurrence, with working letters | Later occurrences | Assessment |
+| --- | --- | ---: | --- |
+| △ | `GO △ OD` | 1 | GOOD fits the closing before COUSIN. |
+| 中 | `CO 中 USm.y^w` | 3 | COUSIN fits the repeated references alongside `873` and MASTER; the introductory spelling is damaged. |
+| □ | `MAS □ TER` | 3 | MASTER fits all three later references; one takes the separately enciphered plural/possessive S. |
+| ＋ / + | `U ＋ S` | 4 | US fits after PREIUDICED and the three later TO phrases. Treating the two cross forms alike is a working hypothesis. |
+
+The first four placements may be glosses inserted inside spelled words. That is
+an interpretation of the transcription, **not an observed feature of the
+manuscript**. Expanding every sign as additive text would give duplicates such
+as GOGOODOD. The decoder therefore shows the 11 standalone readings as, for
+example, `{□:MASTER}`, and the four possible glosses as `⟦□:MASTER;role?⟧`.
+It never silently deletes a sign, including with `--hide-nulls`.
+
+This makes a Courland envoy a plausible intended reader of Charles's letter:
+it repeatedly refers to the Duke as `[COUSIN] [873] [MASTER]` and wishes the
+recipient a safe return. The identification of the recipient, and the unresolved
+possessive `873`, are still inferences; the archival title remains “to Boswell”.
+
+## The repeated codes: progress and conflicts
+
+**`591 = OUR`, with `749 = SELVES`, is the strongest new word-code lead.**
+In the first occurrence it gives ACKNOWLEDGE OUR SELVES THEREBY HIGHLY OBLIGED.
+In the second, the exact span is:
 
 ```text
-303 291 40 his 34 44 29 hir &
-65 50 60 25 22 16 376 deceased of happy memory
+20 69 591 & 70 88 126
 ```
 
-Working output:
+Using OUR gives **A C OUR & E S Y**. A COURTESY would require reading the
+transcribed `&` as T. There is a comparable problem in DAR&MOUTH, but that
+analogy does not establish either correction. The decoder keeps `&`; OUR and
+SELVES remain exploratory. This explains more than DGE, which produces ACDGE
+at the second occurrence and redundantly follows complete ACKNOWLEDGE at the
+first. Bourdeau proposes OUR/SELVES; the conditional courtesy comparison is
+our check against the second occurrence.
 
-```text
-⟦303⟧ {DUKE} S his F A T hir &
-U N K L E ⟨∅:16⟩ ⟨∅:376⟩ deceased of happy memory
-```
+**`873` cannot yet be assigned a single literal value.** Five bare Charles
+occurrences favour YOUR. Nicholas has `873r`, which favours YOU plus a visible R.
+Choosing YOUR everywhere gives YOURR there; choosing YOU everywhere leaves the
+Charles possessives incomplete. All six occurrences remain unresolved in working
+mode. A transcription error, modifier, or overlapping gloss could explain the
+difference, but none has been established.
 
-Exploratory output:
+**`854 = WILL` fits THEY WILL DO in Nicholas**, but produces WILLeCOMly in
+Charles. The latter suggests WELCOME-like wording, not a clean second WILL.
+Both occurrences stay unresolved. The letter numbers and suffix must be checked
+against the manuscript before changing the code value.
 
-```text
-⟦303:TWO?⟧ {DUKE} S his F A T hir &
-U N K L E ⟨∅:16⟩ ⟦376:BOTH?⟧ deceased of happy memory
-```
+## Complete list of unresolved numerical values
 
-Both candidates are recorded in `partial_key.json`. Exploratory mode tests BOTH
-in place of the proposed null; working mode keeps `303` unresolved and `376`
-marked as a proposed null. These are two inferences from **one context**, not
-independent confirmations of each other. No source spelling is repaired and
-neither candidate is added to the proof passages.
+Counts are for the two preserved cipher-bearing extracts. Each row records what
+can currently constrain the value; a grammatical fit alone does not close it.
+The exact source positions are available through `concordance.py` and the audit.
 
-The other suggestions do not justify new selected key values. Several repeat
-existing hypotheses; the remaining plausible words lack a distinguishing
-constraint. Two stronger claims conflict with the current transcription:
-`and` completes `CURLand`, followed by `S ⟦873⟧ M A S □ T E R`, which does not
-recover AND SEMIGALLIA; and `591 = DGE` would append DGE to already-complete
-ACKNOWLEDGE and produce ACDGE at its second occurrence. These claims are not
-added to the key. [Published transcription](https://cryptiana.blogspot.com/2021/09/charles-i-boswell-cipher-1643.html).
+| Code | Count | Candidate or constraint; what remains open |
+| --- | ---: | --- |
+| 145 | 1 | A yields AFFEN*T. AFFECT requires changing the already uncertain `98* = N`. |
+| 170 | 1 | Institution/person after MEANES OF the; ADMIRALTY is unverified. |
+| 177 | 1 | After princely THANKS, before “on this behalf”; ALSO and UNTO HIM are not distinguishable here. |
+| 181 | 1 | Group with a separate S ending. ANABAPTIST and AMBASSADOR are competing guesses. |
+| 185 | 1 | Thing offered/received before the supply list; ASSISTANCE or SUPPLY plausible. |
+| 188 | 1 | Supply-list entry; ARMS and POWDER compete. |
+| 190 | 1 | ARE fits THEY … understood; one context only. |
+| 205 | 1 | ASSURE fits TO … OUR said COUSIN … MASTER; one context only. |
+| 213 | 1 | After “addres by”, before TO US: a means of communication or intermediary. Not established as LETTER. |
+| 228 | 1 | After the delivery-place list; BRISTOL plausible, not a recovered place name. |
+| 289 | 1 | Between ARRIUD and “safe”; needs a second use or clearer manuscript. |
+| 303 | 1 | TWO fits DUKE S followed by father and uncle; only one shared funeral context. |
+| 406 | 1 | Stem before source “ous”; GENER now selected for exploration, BOUNTE retained as an alternative. |
+| 484 | 1 | HIS MAJESTY fits the opening better than the former I AM guess; the following COMANDS TO SIGNIAY still has problems. |
+| 514 | 1 | Qualifier before LETTER; OTHER plausible, but no repetition. |
+| 539 | 1 | Supply before separate S; both MUSKET and CANNON permit the plural. |
+| 591 | 2 | OUR fits the acknowledgement; courtesy requires the separate `&` correction discussed above. |
+| 629 | 1 | Request verb before “you therefore”; PRAY and REQUIRE compete. |
+| 636 | 1 | PRO would join the source “por”; it does not supply the missing TION in a proposed PROPORTION. |
+| 639 | 1 | Supply after MATCH &; POWDER and LEAD compete. |
+| 640 | 1 | PORT(S) fits before OF the destinations; singular/plural remains uncertain. |
+| 726 | 1 | Origin of the group: STATES is a history-led candidate, dependent on 181. |
+| 746 | 1 | Stem before LY and TO HINDER; SECRET plausible, other adverbs possible. |
+| 749 | 1 | SELVES fits with 591=OUR; this pair shares one context. |
+| 750 | 1 | SEND fits “herewith”; the following credentials-like text is anomalous. |
+| 755 | 1 | First supply-list entry; insufficient evidence to choose MUSKET(S), STORE, or another item. |
+| 851 | 1 | WHICH could refer to invitations; WHOM could refer to a person. |
+| 854 | 2 | WILL conflicts with the Charles suffix; see above. |
+| 873 | 6 | YOU/YOUR conflict; see above. |
 
-The v3 key changes only Charles's exploratory reading, at `303` and `376`.
-The two committed working outputs remain identical to v2. Working coverage
-remains **48 unresolved numerical occurrences** and **15 unresolved graphical
-occurrences**. The proposed-null count remains 51.
+`376` is an additional unresolved **interpretive choice** hidden by a simple
+unknown-code count: working mode treats it as a proposed null; exploratory mode
+shows BOTH. TWO and BOTH fit the named pair of deceased dukes, but the single
+funeral passage does not independently establish either value. Proposed nulls
+are assumptions, not proven omissions.
 
-## A separate letter from the same date
+The new AMBASSADOR/STATES pair is a historical lead from Bourdeau, not a numerical
+solution. His suggestions for HIS MAJESTY, GENER, PRO and SECRET likewise remain
+labelled hypotheses. The nomenclator may group words by initial, but an exact
+alphabetical order has not been recovered and is not used to force assignments.
+
+## External cipher evidence: DUKE
 
 H. F. Morland Simpson's *Civil War Papers*, in *Miscellany of the Scottish History
-Society*, volume I (1893), prints a duplicate of Charles I's letter to Duke James
-of Courland, Oxford, **2 November 1643**. Page 149 contains this numerical line:
+Society*, volume I (1893), p. 149, prints a duplicate letter from Charles I to
+Duke James of Courland, Oxford, **2 November 1643**, including:
 
 ```text
 291, 588, 45, 135, 52, 25, 20, 50, 81.
 ```
 
-Using the working key already committed at `165dd0c`, before this source was
-consulted, it reads:
-
-```text
-⟦291⟧, {OF}, C, U, R, L, A, N, D.
-```
-
-Six letters follow the existing periodic alphabet; `135 = U` and `588 = OF`
-were also already in the key. No new letter value or local correction is needed.
-The printed addressee supports interpreting the remaining code as **DUKE**.
-This also fits both occurrences of `291` in the target Charles letter: before
-`OF CURLand`, and before the plural `S` in the funeral passage.
+The v1 key, committed before consulting that source, gives `⟦291⟧ OF CURLAND`.
+The printed addressee supports **291 = DUKE**, which also fits both target
+occurrences. This remains our strongest external check on a word code. The
+printed image was examined; the historical manuscript was not. The edition
+warns that its transcription may contain errors.
 [Printed page 149](https://archive.org/details/miscellanyofscot01scot/page/149/mode/1up),
-[page image](https://iiif.archive.org/iiif/miscellanyofscot01scot$247/full/1600,/0/default.jpg).
+[page image](https://iiif.archive.org/iiif/miscellanyofscot01scot$247/full/1600,/0/default.jpg),
+[recorded evidence](input/external_evidence.json).
 
-`291 = DUKE` was therefore promoted from exploratory to **working** in v2.
-The exact printed sequences, baseline result, source details, and image hash are recorded
-in [input/external_evidence.json](input/external_evidence.json). The image was
-visually checked; the original manuscript was not. The edition warns that its
-transcription may contain errors. This is an external consistency check, found
-through the Courland lead, rather than a blind accuracy test or a recovered key.
+That letter says credentials and a message reached the king through `212, 364,`
+and mentions re-credentials. This fits the general packet context, but does not
+establish that `212` is the target's `213`, or decipher either. Nicholas's
+cleartext says two royal letters were put into the recipient's cipher for him
+to decipher and interpret.
 
-The external letter says an envoy's credentials and message reached the king
-through `212, 364,` and that the king is sending a reply and re-credentials. That is
-consistent with the target Nicholas letter's mention of two enclosed royal
-letters, but a shared packet is **not established**. Neither `212` nor the
-target letter's `213` has been identified, and they must not be conflated.
+## Transcription and historical checks
 
-## Arms: a useful crib, with competing assignments
+- **Credentials:** the final numerical sequence literally gives
+  `YOURE*REDENTIALS` when the proposed null is hidden. Changing `70 = E` to C
+  would give YOUR CREDENTIALS, with the source star retained. Changing only
+  `6*` to C gives YOURECREDENTIALS, not YOUR RE-CREDENTIALS; the latter needs
+  another R. Neither repair is applied.
+- **Answer:** `an 1 4 40 30 69 28 3` gives ANSWCR under the null model.
+  Replacing 69 by an E value (22, 46, 70 or 94) would give ANSWER. This is a
+  possible numeral error, not a change to the alphabet. Values 72 and 96 are I,
+  so they cannot perform that repair.
+- **Title:** the source “and” completes CURLAND, followed by S and the master
+  phrase. AND SEMIGALLIA is not recovered by these tokens; no title is inserted.
+- **Supplies:** `755 188 539 40 16 61 at 45 83 & 639` gives three unknown codes,
+  S, proposed null, MATCH & another unknown. There is no recovered SOME before
+  MATCH. Later correspondence lists muskets, powder, match, lead and cannon,
+  but cannot assign their order to these once-used codes. The St Andrews entry
+  concerns the 1644–45 mission; Simpson's letters VII and XIV carry 1646 dates
+  as printed. [SSNE 1490](https://www.st-andrews.ac.uk/history/ssne/item.php?id=1490),
+  [letter VII](https://archive.org/details/miscellanyofscot01scot/page/158/mode/2up),
+  [letter XIV](https://archive.org/details/miscellanyofscot01scot/page/163/mode/2up).
+- **Places:** preserve WEYMOTH, DAR&MOUTH, X^ETER, FALLMOUTH and unknown 228.
+  PLYMOUTH is not present in the recovered sequence.
+- **Funerals and name:** Latvian archival descriptions support the Courland
+  family context and identify the envoy Georg Fircks. The target spells
+  `FIRXSS`; FIRCKS would require changes at two positions. This does not yet
+  identify the named person. [Frederick, item 17](https://www.archiv.org.lv/hercogiste/index.php?id=23&lang=en),
+  [William, item 8](https://www.archiv.org.lv/hercogiste/index.php?id=17&lang=en),
+  [foreign relations, item 1](https://www.archiv.org.lv/jekabs/?lang=en&page=206).
 
-The St Andrews SSNE entry for John Cochrane describes negotiations with Duke
-James involving muskets, powder, match, lead, and cannon. Its itinerary places
-the Baltic mission in 1644–45, rather than directly documenting our November
-1643 letter. It establishes a relevant supply relationship, not the values of
-our numerical codes.
-[SSNE 1490](https://www.st-andrews.ac.uk/history/ssne/item.php?id=1490).
+These local correction candidates must be kept separate from code assignments.
+They show why filling every unknown code would still not produce an authenticated
+complete plaintext.
 
-Following that bibliography led to printed primary correspondence: letter VII
-requests muskets, powder, match, and lead bullets; letter XIV reports receipt
-of cannon and muskets. Their headings date them **5 January and 2/12 May 1646**
-respectively. These are dates as printed, not a resolution of the chronology:
-the edition's later historical notes also discuss events of 1645. The supplies
-cannot be assigned to the 1643 ciphertext merely by matching a later list.
-[Letter VII, pp. 158–159](https://archive.org/details/miscellanyofscot01scot/page/158/mode/2up),
-[letter XIV, pp. 163–165](https://archive.org/details/miscellanyofscot01scot/page/163/mode/2up).
+## Manuscripts and the route to completion
 
-The relevant source sequence is:
+The National Archives Discovery API now confirms the target references:
 
-```text
-755 188 539 40 16 61 at 45 83 & 639
-```
+| Document | Reference | Folio | Catalogue record |
+| --- | --- | --- | --- |
+| Charles I to Boswell, 2 November 1643 | SP 84/157/96 | 217 | [C7305802](https://discovery.nationalarchives.gov.uk/details/r/C7305802) |
+| Nicholas to Boswell, 2 November 1643 | SP 84/157/97 | 219 | [C7305803](https://discovery.nationalarchives.gov.uk/details/r/C7305803) |
 
-The working key produces:
+Both records report `digitised: false` as checked on 23 September 2026. This
+is the archive's catalogue status, not proof that no third-party images exist.
+The required next evidence is images of **all sides** of these items, especially
+Charles's opening, the courtesy passage, `854e`, the graphic placements and
+Nicholas's `873r`. No images of these target manuscripts have been examined.
 
-```text
-⟦755⟧ ⟦188⟧ ⟦539⟧ S ⟨∅:16⟩ M at C H & ⟦639⟧
-```
+The same volume identifies potentially useful replies: Boswell to Nicholas,
+[SP 84/157/99, f. 223](https://discovery.nationalarchives.gov.uk/details/r/C7305805),
+and [SP 84/157/106, f. 237](https://discovery.nationalarchives.gov.uk/details/r/C7305812).
+Their contents have not been inspected. A reply, contemporary decipherment or
+matching key could distinguish the supplies, group and intermediary codes that
+occur only once here.
 
-**MATCH is partly enciphered:** the numbers supply M, C, H; `at` was already
-readable. `40 = S` could be a plural ending for either MUSKET or CANNON. Each
-unknown supplies code occurs once in the two-letter corpus; no second local
-occurrence distinguishes the competing readings.
+DECODE also catalogues a Nicholas-to-Charles key at **British Library, Egerton
+MS 2550, ff. 3–4**, record [3054](https://de-crypt.org/decrypt-web/RecordsView/3054?showdetail=).
+Its broad catalogue date range is 1646–1658 and its images require authentication.
+It is an untested lead, not an identified 1643 key. The public DECODE search for
+Boswell returned an unrelated 1628 record, not either target manuscript.
+[DECODE database](https://de-crypt.org/decrypt-web/RecordsList).
 
-| Code | Original exploratory candidate | New history-led candidate | Main-corpus occurrences |
-| --- | --- | --- | ---: |
-| 755 | Unresolved | MUSKET(S) | 1 |
-| 188 | ARMS | POWDER | 1 |
-| 539 | MUSKET | CANNON | 1 |
-| 639 | POWDER | LEAD | 1 |
-
-These alternatives are recorded in `partial_key.json`; **none is promoted to
-working**. Exploratory decoding still displays the original selected candidates
-with question marks. The `alternatives` fields retain the new suggestions for
-comparison; they are not silently substituted into the output.
-
-## Historical and transcription constraints
-
-- **Funerals:** the Latvian archives record Frederick's funeral in February
-  1643 and William's death in 1640, with his remains ordered home two years
-  later. This supports the Courland family context. The cipher literally gives
-  `FAT` plus cleartext `hir`, and `UNKLE`; it does not cleanly produce modern
-  `FATHER`. [Frederick, item 17](https://www.archiv.org.lv/hercogiste/index.php?id=23&lang=en),
-  [William, item 8](https://www.archiv.org.lv/hercogiste/index.php?id=17&lang=en).
-- **Ports:** retain `WEYMOTH`, `DAR&MOUTH`, `X^ETER`, `FALLMOUTH`, and unresolved
-  `228`. There is no established PLYMOUTH reading. Plymouth remained under
-  Parliament during the siege, so inserting it into a list of Royalist delivery
-  ports is additionally questionable. `228 = BRISTOL` remains a hypothesis.
-  [The Box Plymouth](https://www.theboxplymouth.com/blog/art/collection-insight-execution-of-a-traitor).
-- **Personal name:** Nicholas's `82 48 52 42 40 64` gives `FIRXSS`. The archives
-  identify Georg Fircks as Courland's envoy who signed the French agreement in
-  December 1643. `FIRCKS` is a useful manuscript-check candidate, but it would
-  require different values at two positions: C instead of X, K instead of S.
-  No source numeral or alphabet assignment has been altered to obtain it.
-  [Latvian archives, foreign relations, item 1](https://www.archiv.org.lv/jekabs/?lang=en&page=206).
-
-## Remaining evidence
-
-The working result still contains 32 unresolved numerical occurrences in Charles
-and 16 in Nicholas. No further assignment was established in the cleanup review.
-The strongest next checks concern repeated codes and the provisional transcription:
-
-| Target | Current constraint | Evidence needed |
-| --- | --- | --- |
-| `873` (6 occurrences) and nearby graphics | Bare, suffixed, and graphic-enclosed forms may differ; YOU does not explain them all. | Manuscript images showing the actual symbols and their boundaries. |
-| `854` (2 occurrences, both letters) | WILL fits Nicholas's tentative THEY … DO, but gives `WILLeCOMly` in Charles. | Inspect the Charles numeral and adjacent cleartext before selecting one value. |
-| `591` (2 occurrences) | A value must fit both `ACKNOWLEDGE [591] [749]` and `AC [591]`; DGE fails. | A clearer transcription or a matching key covering both uses. |
-| `303`, `376` (1 occurrence each) | TWO and BOTH fit a single shared context; `376` may still be null. | A second occurrence or a historical key that distinguishes the alternatives. |
-| Supplies, `228`, and Nicholas's `170`, `181`, `726` | Context suggests categories but does not identify the words, place, institution, or group. | Another letter using these codes or a matching nomenclator. |
-| `212`/`213`, `FIRXSS`, and the final credentials-like passage | Proposed identities and spelling repairs are not established. | Original numeral and letter forms; keep possible transcription corrections separate from key changes. |
-
-The original target manuscript references and a matching historical key have
-not been established. A full decipherment requires additional evidence; the
-repository makes the current partial result reproducible and the gaps explicit.
+Catalogue details, retrieval hashes and research provenance are recorded in
+[input/research_evidence.json](input/research_evidence.json). No archive order,
+account registration or contact with a researcher has been made.
 
 ## Reproduce and continue
 
@@ -186,33 +226,17 @@ repository makes the current partial result reproducible and the gaps explicit.
 python3 -m unittest -v test_decoder.py
 python3 verify_independently.py
 python3 decode_boswell.py --check
-python3 concordance.py 303 376
+python3 concordance.py 591 749 854 873 --include-external
 python3 decode_boswell.py --document Charles --mode exploratory
-python3 concordance.py 755 188 539 639 228 291 873 --include-external
 python3 decode_boswell.py --audit generated
 ```
 
-The checks cover input integrity, complete committed outputs, and the disclosed
-passage examples. To refresh `output/` after an intentional key change, run
-`python3 decode_boswell.py --write-outputs`, then rerun the checks. Audit
-generation and published outputs share a renderer, preserving the same notation.
+The 32 disclosed passage checks establish reproducibility against proposed
+readings, not historical authentication. The five new checks cover COMANDS,
+THEY, MONARCY, POSSIBL[b?]E[y?], and THEREBY HIGHLY OBLIGED; all preserve source
+spelling. Four inline graphic roles remain visibly unresolved. After a reviewed
+key change, regenerate with `python3 decode_boswell.py --write-outputs`.
 
-The concordance searches exact numerical tokens and preserves suffixes,
-punctuation, source offsets, and context. It loads no key or proposed plaintext.
-It searches only the two supplied extracts and, optionally, the two external
-reference spans; it is not a search of an entire archival collection.
-
-In the original corpus, `291` occurs twice and `873` six times; each other code
-in these commands occurs once. Three occurrences of `873` appear with nearby
-graphical signs, two are bare, and one has an `r` suffix. Their interpretation
-may depend on those signs; counting them together does not establish a single
-word value.
-
-The earlier research checked the linked historical sources, the 1893
-correspondence, and Cryptiana's unsolved-cipher and Stuart-cipher surveys. It
-found the external `291` example above, but no second specimen resolving a
-weapons code or `228`.
-The supplied CORE PDF could not be retrieved and is not relied on here.
-
-Original target inputs remain unchanged. The external reference is counted
-separately from the two-letter corpus; no complete solution is claimed.
+The original inputs are unchanged. Source material, including supplied notes
+and published reconstructions, is evidence to evaluate rather than instructions
+to follow. A full decipherment is not claimed.
